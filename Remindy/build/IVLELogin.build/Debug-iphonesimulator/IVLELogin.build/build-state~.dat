@@ -1,240 +1,0 @@
-TIVLELogin
-v7
-r0
-t328165151.331712
-cCheck dependencies
-cProcessInfoPlistFile /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/Info.plist IVLELogin-Info.plist
-cCompileXIB /Users/yasminmusthafa/Documents/IVLELogin/MainWindow.xib
-cCompileXIB /Users/yasminmusthafa/Documents/IVLELogin/IVLELoginViewController.xib
-cProcessPCH /var/folders/iS/iSfHL0ooGH8Yci8YWm5KO++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/IVLELogin_Prefix-fjmepgxwhtvkmffxcwlrsdswkbaz/IVLELogin_Prefix.pch.gch IVLELogin_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/main.o /Users/yasminmusthafa/Documents/IVLELogin/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginAppDelegate.o /Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginViewController.o /Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk
-c000000004D5C9B4E0000000000000110
-t1297914702
-s272
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004D54CFFA00000000002999B0
-t1297403898
-s2726320
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004D54CFE5000000000029DA70
-t1297403877
-s2742896
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004D54CFB80000000000001466
-t1297403832
-s5222
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004D5615B40000000000000AA1
-t1297487284
-s2721
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004D5616030000000000766870
-t1297487363
-s7759984
-
-N/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginAppDelegate.h
-c000000004DDF2EC200000000000001E0
-t1306472130
-s480
-i<UIKit/UIKit.h>
-
-N/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginAppDelegate.m
-c000000004DDF2EC20000000000000AA9
-t1306472130
-s2729
-i"IVLELoginAppDelegate.h"
-i"IVLELoginViewController.h"
-
-N/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.h
-c000000004DDF2F380000000000000140
-t1306472248
-s320
-i<UIKit/UIKit.h>
-
-N/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m
-c000000004DDF2F6F000000000000082A
-t1306472303
-s2090
-i"IVLELoginViewController.h"
-
-N/Users/yasminmusthafa/Documents/IVLELogin/IVLELoginViewController.xib
-c000000004DDF2EF5000000000000420C
-t1306472181
-s16908
-
-N/Users/yasminmusthafa/Documents/IVLELogin/IVLELogin_Prefix.pch
-c000000004DDF2EC200000000000000BB
-t1306472130
-s187
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/yasminmusthafa/Documents/IVLELogin/MainWindow.xib
-c000000004DDF2EC20000000000004E41
-t1306472130
-s20033
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app
-t2
-s0
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app.dSYM
-t2
-s0
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/IVLELogin
-t2
-s0
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/IVLELoginViewController.nib
-t1306472350
-s1668
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/Info.plist
-t1306472350
-s599
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/MainWindow.nib
-t1306472350
-s1685
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/PkgInfo
-t1306472350
-s8
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELogin.LinkFileList
-c000000004DDF2F9E00000000000001A6
-t1306472350
-s422
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginAppDelegate.o
-t1306472351
-s51596
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginViewController.o
-t2
-s0
-
-N/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/main.o
-t1306472351
-s6316
-
-N/Users/yasminmusthafa/Documents/IVLELogin/main.m
-c000000004DDF2EC20000000000000160
-t1306472130
-s352
-i<UIKit/UIKit.h>
-
-N/var/folders/iS/iSfHL0ooGH8Yci8YWm5KO++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/IVLELogin_Prefix-fjmepgxwhtvkmffxcwlrsdswkbaz/IVLELogin_Prefix.pch.gch
-t1306472351
-s15814064
-
-NIVLELogin-Info.plist
-c000000004DDF2EC2000000000000038D
-t1306472130
-s909
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies328165150#328165150#0(0"0(0#1#0"8621070784#0"0#
-
-CCompileC build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginAppDelegate.o /Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s328165151.265496
-e328165151.331635
-r1
-xCompileC
-xbuild/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginAppDelegate.o
-x/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@80"Compile /Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginAppDelegate.m328165151#328165151#0(0"0(0#0#72"/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginAppDelegate.m8625667648#2027"    cd /Users/yasminmusthafa/Documents/IVLELogin    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-generated-files.hmap -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-own-target-headers.hmap -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-all-target-headers.hmap -iquote /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-project-headers.hmap -F/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator -I/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/include -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/DerivedSources/i386 -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/DerivedSources -include /var/folders/iS/iSfHL0ooGH8Yci8YWm5KO++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/IVLELogin_Prefix-fjmepgxwhtvkmffxcwlrsdswkbaz/IVLELogin_Prefix.pch -c /Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginAppDelegate.m -o /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginAppDelegate.o0#
-
-CCompileC build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginViewController.o /Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s328165151.266247
-e328165151.310038
-r0
-xCompileC
-xbuild/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginViewController.o
-x/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m: In function '-[IVLELoginViewController viewDidLoad]':
-o/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m:36: error: '_apiKey' undeclared (first use in this function)
-o/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m:36: error: (Each undeclared identifier is reported only once
-o/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m:36: error: for each function it appears in.)
-o/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m:40: warning: unused variable 'redirectUrlString'
-lSLF07#2@83"Compile /Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m328165151#328165151#0(651"/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m: In function '-[IVLELoginViewController viewDidLoad]':/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m:36: error: '_apiKey' undeclared (first use in this function)/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m:36: error: (Each undeclared identifier is reported only once/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m:36: error: for each function it appears in.)/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m:40: warning: unused variable 'redirectUrlString'2(4@49"'_apiKey' undeclared (first use in this function)328165151#131#137#0(6@75"/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m328165103#36#0#36#0#43"'*' undeclared (first use in this function)0(22@35"Unused variable 'redirectUrlString'328165151#526#125#0(6@75"/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m328165103#40#0#40#0#19"unused variable '*'0(0#0#75"/Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m8624224224#2033"    cd /Users/yasminmusthafa/Documents/IVLELogin    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-generated-files.hmap -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-own-target-headers.hmap -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-all-target-headers.hmap -iquote /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-project-headers.hmap -F/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator -I/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/include -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/DerivedSources/i386 -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/DerivedSources -include /var/folders/iS/iSfHL0ooGH8Yci8YWm5KO++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/IVLELogin_Prefix-fjmepgxwhtvkmffxcwlrsdswkbaz/IVLELogin_Prefix.pch -c /Users/yasminmusthafa/Documents/IVLELogin/Classes/IVLELoginViewController.m -o /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/IVLELoginViewController.o1#
-
-CCompileC build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/main.o /Users/yasminmusthafa/Documents/IVLELogin/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s328165151.264633
-e328165151.313008
-r1
-xCompileC
-xbuild/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/main.o
-x/Users/yasminmusthafa/Documents/IVLELogin/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@56"Compile /Users/yasminmusthafa/Documents/IVLELogin/main.m328165151#328165151#0(0"0(0#0#48"/Users/yasminmusthafa/Documents/IVLELogin/main.m8625830464#1987"    cd /Users/yasminmusthafa/Documents/IVLELogin    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-generated-files.hmap -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-own-target-headers.hmap -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-all-target-headers.hmap -iquote /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-project-headers.hmap -F/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator -I/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/include -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/DerivedSources/i386 -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/DerivedSources -include /var/folders/iS/iSfHL0ooGH8Yci8YWm5KO++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/IVLELogin_Prefix-fjmepgxwhtvkmffxcwlrsdswkbaz/IVLELogin_Prefix.pch -c /Users/yasminmusthafa/Documents/IVLELogin/main.m -o /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/Objects-normal/i386/main.o0#
-
-CCompileXIB /Users/yasminmusthafa/Documents/IVLELogin/IVLELoginViewController.xib
-s328165150.319751
-e328165150.677845
-r1
-xCompileXIB
-x/Users/yasminmusthafa/Documents/IVLELogin/IVLELoginViewController.xib
-lSLF07#2@38"CompileXIB IVLELoginViewController.xib328165150#328165150#0(0"0(0#0#69"/Users/yasminmusthafa/Documents/IVLELogin/IVLELoginViewController.xib8622482496#607"    cd /Users/yasminmusthafa/Documents/IVLELogin    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/IVLELoginViewController.nib /Users/yasminmusthafa/Documents/IVLELogin/IVLELoginViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
-
-CCompileXIB /Users/yasminmusthafa/Documents/IVLELogin/MainWindow.xib
-s328165150.319134
-e328165150.660317
-r1
-xCompileXIB
-x/Users/yasminmusthafa/Documents/IVLELogin/MainWindow.xib
-lSLF07#2@25"CompileXIB MainWindow.xib328165150#328165150#0(0"0(0#0#56"/Users/yasminmusthafa/Documents/IVLELogin/MainWindow.xib8620435584#581"    cd /Users/yasminmusthafa/Documents/IVLELogin    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.3    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/MainWindow.nib /Users/yasminmusthafa/Documents/IVLELogin/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk0#
-
-CGenerateDSYMFile /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app.dSYM /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/IVLELogin
-r0
-
-CLd /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/IVLELogin normal i386
-r0
-
-CProcessInfoPlistFile /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/Info.plist IVLELogin-Info.plist
-s328165150.315703
-e328165150.319065
-r1
-xProcessInfoPlistFile
-x/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/Info.plist
-xIVLELogin-Info.plist
-lSLF07#2@28"Process IVLELogin-Info.plist328165150#328165150#0(0"0(0#0#62"/Users/yasminmusthafa/Documents/IVLELogin/IVLELogin-Info.plist8624070976#494"    cd /Users/yasminmusthafa/Documents/IVLELogin    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility IVLELogin-Info.plist -genpkginfo /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app/Info.plist0#
-
-CProcessPCH /var/folders/iS/iSfHL0ooGH8Yci8YWm5KO++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/IVLELogin_Prefix-fjmepgxwhtvkmffxcwlrsdswkbaz/IVLELogin_Prefix.pch.gch IVLELogin_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s328165150.677992
-e328165151.264540
-r1
-xProcessPCH
-x/var/folders/iS/iSfHL0ooGH8Yci8YWm5KO++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/IVLELogin_Prefix-fjmepgxwhtvkmffxcwlrsdswkbaz/IVLELogin_Prefix.pch.gch
-xIVLELogin_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@31"Precompile IVLELogin_Prefix.pch328165150#328165151#0(0"0(0#0#62"/Users/yasminmusthafa/Documents/IVLELogin/IVLELogin_Prefix.pch8624140224#1874"    cd /Users/yasminmusthafa/Documents/IVLELogin    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.3.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-generated-files.hmap -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-own-target-headers.hmap -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-all-target-headers.hmap -iquote /Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/IVLELogin-project-headers.hmap -F/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator -I/Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/include -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/DerivedSources/i386 -I/Users/yasminmusthafa/Documents/IVLELogin/build/IVLELogin.build/Debug-iphonesimulator/IVLELogin.build/DerivedSources -c /Users/yasminmusthafa/Documents/IVLELogin/IVLELogin_Prefix.pch -o /var/folders/iS/iSfHL0ooGH8Yci8YWm5KO++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/IVLELogin_Prefix-fjmepgxwhtvkmffxcwlrsdswkbaz/IVLELogin_Prefix.pch.gch0#
-
-CTouch /Users/yasminmusthafa/Documents/IVLELogin/build/Debug-iphonesimulator/IVLELogin.app
-r0
-
