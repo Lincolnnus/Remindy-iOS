@@ -142,8 +142,14 @@
 				CF8AA82D1776E27800688642 /* Supporting Files */,
 				CF2E448C177768C4006B0F57 /* EventModel.h */,
 				CF2E448D177768C4006B0F57 /* EventModel.m */,
+<<<<<<< HEAD
 				49AC3A2C17885C5600680735 /* serverUtil.h */,
 				49AC3A2D17885C5600680735 /* serverUtil.m */,
+=======
+				CFFD3DF9177D33F1002C1ADE /* EventViewController.h */,
+				CFFD3DFA177D33F1002C1ADE /* EventViewController.m */,
+				CFFD3DFB177D33F1002C1ADE /* EventViewController.xib */,
+>>>>>>> ef646ad5e7ac93794c391067c99787df5ef66b90
 			);
 			path = Remindy;
 			sourceTree = "<group>";
@@ -233,7 +239,11 @@
 				CF8AA8371776E27800688642 /* AppDelegate.m in Sources */,
 				CF8AA8431776E27800688642 /* ViewController.m in Sources */,
 				CF2E448E177768C5006B0F57 /* EventModel.m in Sources */,
+<<<<<<< HEAD
 				49AC3A2E17885C5600680735 /* serverUtil.m in Sources */,
+=======
+				CFFD3DFC177D33F1002C1ADE /* EventViewController.m in Sources */,
+>>>>>>> ef646ad5e7ac93794c391067c99787df5ef66b90
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,6 +32,7 @@
 	[loginView loadRequest:request];
     // Do any additional setup after loading the view, typically from a nib.
     events = [[NSMutableArray alloc] init];
+    events[0] = [[EventModel alloc] initWith:@"First Event"];
     eventTableView.dataSource = self;
     eventTableView.delegate = self;
 }
@@ -45,7 +46,9 @@
     
     return TRUE;
 }
-
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSLog(@"finished lodding");
+}
 
 -(void)checkForAccessToken:(NSString *)urlString {
 	
@@ -99,6 +102,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    EventModel *event = [events objectAtIndex:[indexPath row]];
+    //[[EventViewController alloc]init];
+    NSLog(@"%@",event);
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -10,4 +10,6 @@
 
 @interface EventModel : NSObject
 @property (nonatomic) NSString *title;
+
+-(id) initWith:(NSString*)title;
 @end
