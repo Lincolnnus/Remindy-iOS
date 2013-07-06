@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ModuleViewController.h"
 //#import "AFJSONRequestOperation.h"
 
 @interface ViewController ()
@@ -96,10 +97,6 @@
 	}
     
 }
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showRecipeDetail"]) {
-    }
-}
 - (void)getUid{
     NSString *token=[myCache objectForKey:@"token"];
     NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
@@ -107,6 +104,7 @@
     NSURL *url = [NSURL URLWithString:useridUrlString];
     NSLog(@"getting uid");
     NSString *uid = [NSString stringWithContentsOfURL:url];
+    [myCache setObject:uid forKey:@"uid"];
     NSLog(@"uid%@",uid);
 }
 - (void)getModules{
@@ -123,11 +121,31 @@
     
     NSLog(@"content%@",content);
     
+    NSData *jsonData = [content dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSError *error = nil;
+    NSDictionary *myModules = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+    
+    if(!myModules) {
+        NSLog(@"%@",error);
+    }
+    else {
+        //Do Something
+        NSLog(@"%@", myModules);
+        [myCache setObject:myModules forKey:@"modules"];
+        [self performSegueWithIdentifier:@"segue1" sender:myString];
+    }
+    
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showModuleView"]) {
+        ModuleViewController *destViewController = segue.destinationViewController;
+        destViewController.modules = [myCache objectForKey:@"modules"];
+    }
+}
 @end

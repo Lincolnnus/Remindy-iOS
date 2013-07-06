@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ModuleViewController : UIViewController
-
+@interface ModuleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *moduleTableView;
+@property (nonatomic) NSArray *modules;
 @end
