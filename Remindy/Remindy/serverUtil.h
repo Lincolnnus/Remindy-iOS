@@ -7,16 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "event"
+#import "EventModel.h"
+#import <Parse/Parse.h>
 
 @interface serverUtil : NSObject
 
 // User creates a new event:
-+ (void)             user:(NSString *) matricNumber
-        addEventForModule:(NSString*) moduleCode
-                withTitle:(NSString*) title
-          withDescription:(NSString*) description
-             withDeadline:(NSDate*) deadline;
++ (void)             user:(NSString *) matricNumber addEvent:(EventModel*) event;
 
 // User clicked "Agree" or "Disagree" button:
 + (void) user:(NSString *) matricNumber agreesEventWithID:(NSString*) eventID;
@@ -28,5 +25,7 @@
 + (BOOL) user:(NSString *) matricNumber didDisagreedEventWithID:(NSString *)eventID;
 
 + (NSArray*) retrieveAllEventsOfModule:(NSString *) moduleCode;
+
++ (void) testServerUtil;
 
 @end

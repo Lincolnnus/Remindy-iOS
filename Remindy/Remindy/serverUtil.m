@@ -10,22 +10,36 @@
 
 @implementation serverUtil
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+// User creates a new event:
++ (void)             user:(NSString *) matricNumber addEvent:(EventModel*) event{
+    
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+// User clicked "Agree" or "Disagree" button:
++ (void) user:(NSString *) matricNumber agreesEventWithID:(NSString*) eventID{
+    
 }
-*/
++ (void) user:(NSString *) matricNumber disagreesEventWithID:(NSString *)eventID{
+    
+}
+
+// Has the user typed "Agree" or "Disagree" button before?
+// The return is YES or NO
++ (BOOL) user:(NSString *) matricNumber didAgreeEventWithID:(NSString *)eventID{
+    return YES;
+}
++ (BOOL) user:(NSString *) matricNumber didDisagreedEventWithID:(NSString *)eventID{
+    return NO;
+}
+
++ (NSArray*) retrieveAllEventsOfModule:(NSString *) moduleCode{
+    return NULL;
+}
+
++ (void) testServerUtil{
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    [testObject setObject:@"bar" forKey:@"foo"];
+    [testObject save];
+}
 
 @end

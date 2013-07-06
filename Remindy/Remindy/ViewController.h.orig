@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "EventModel.h"
+<<<<<<< HEAD
+=======
 #import "EventViewController.h"
 #import "serverUtil.h";
+>>>>>>> 14ca9041031208f50bce99df98fa9edd9e251732
 
 @interface ViewController : UIViewController<UITableViewDelegate, UITableViewDataSource,UIWebViewDelegate,NSURLConnectionDelegate>
 
