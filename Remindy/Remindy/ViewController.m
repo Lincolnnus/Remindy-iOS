@@ -96,6 +96,10 @@
 	}
     
 }
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showRecipeDetail"]) {
+    }
+}
 - (void)getUid{
     NSString *token=[myCache objectForKey:@"token"];
     NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";

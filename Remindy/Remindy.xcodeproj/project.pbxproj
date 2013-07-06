@@ -17,6 +17,7 @@
 		49AC3A2717885B2100680735 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A2617885B2100680735 /* StoreKit.framework */; };
 		49AC3A2917885B2F00680735 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A2817885B2F00680735 /* SystemConfiguration.framework */; };
 		49AC3A2B17885B6200680735 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A2A17885B6200680735 /* CoreLocation.framework */; };
+		CF0696801788764100C3F498 /* ModuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF06967E1788764100C3F498 /* ModuleViewController.m */; };
 		CF2E448E177768C5006B0F57 /* EventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2E448D177768C4006B0F57 /* EventModel.m */; };
 		CF8AA8271776E27800688642 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8AA8261776E27800688642 /* UIKit.framework */; };
 		CF8AA8291776E27800688642 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8AA8281776E27800688642 /* Foundation.framework */; };
@@ -44,6 +45,8 @@
 		49AC3A2A17885B6200680735 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		49AC3A2C17885C5600680735 /* serverUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serverUtil.h; sourceTree = "<group>"; };
 		49AC3A2D17885C5600680735 /* serverUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serverUtil.m; sourceTree = "<group>"; };
+		CF06967D1788764100C3F498 /* ModuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleViewController.h; sourceTree = "<group>"; };
+		CF06967E1788764100C3F498 /* ModuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleViewController.m; sourceTree = "<group>"; };
 		CF2E448C177768C4006B0F57 /* EventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModel.h; sourceTree = "<group>"; };
 		CF2E448D177768C4006B0F57 /* EventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModel.m; sourceTree = "<group>"; };
 		CF8AA8231776E27800688642 /* Remindy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remindy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +135,8 @@
 				CF8AA8361776E27800688642 /* AppDelegate.m */,
 				CF8AA83E1776E27800688642 /* MainStoryboard.storyboard */,
 				CF8AA8411776E27800688642 /* ViewController.h */,
+				CF06967D1788764100C3F498 /* ModuleViewController.h */,
+				CF06967E1788764100C3F498 /* ModuleViewController.m */,
 				CF8AA8421776E27800688642 /* ViewController.m */,
 				CF8AA82D1776E27800688642 /* Supporting Files */,
 				CF2E448C177768C4006B0F57 /* EventModel.h */,
@@ -226,6 +231,7 @@
 				CF8AA8371776E27800688642 /* AppDelegate.m in Sources */,
 				CF8AA8431776E27800688642 /* ViewController.m in Sources */,
 				CF2E448E177768C5006B0F57 /* EventModel.m in Sources */,
+				CF0696801788764100C3F498 /* ModuleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
