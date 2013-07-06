@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "event"
 
 @interface serverUtil : NSObject
 
@@ -19,11 +20,13 @@
 
 // User clicked "Agree" or "Disagree" button:
 + (void) user:(NSString *) matricNumber agreesEventWithID:(NSString*) eventID;
-+ (void) user:(NSString *)matricNumber disagreesEventWithID:(NSString *)eventID;
++ (void) user:(NSString *) matricNumber disagreesEventWithID:(NSString *)eventID;
 
 // Has the user typed "Agree" or "Disagree" button before?
 // The return is YES or NO
-+ (BOOL) user:(NSString *)matricNumber didAgreeEventWithID:(NSString *)eventID;
-+ (BOOL) user:(NSString *)matricNumber didDisagreedEventWithID:(NSString *)eventID;
++ (BOOL) user:(NSString *) matricNumber didAgreeEventWithID:(NSString *)eventID;
++ (BOOL) user:(NSString *) matricNumber didDisagreedEventWithID:(NSString *)eventID;
+
++ (NSArray*) retrieveAllEventsOfModule:(NSString *) moduleCode;
 
 @end
