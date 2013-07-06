@@ -14,7 +14,7 @@
 
 @implementation ViewController
 
-@synthesize eventTableView,events,loginView,myCache;
+@synthesize loginView,myCache;
 
 - (void)viewDidLoad
 {
@@ -35,10 +35,6 @@
     
 	[loginView loadRequest:request];
     loginView.delegate = self;
-    // Do any additional setup after loading the view, typically from a nib.
-    events = [[NSMutableArray alloc] init];
-    eventTableView.dataSource = self;
-    eventTableView.delegate = self;
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -123,37 +119,6 @@
     
     NSLog(@"content%@",content);
     
-}
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [events count];
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    EventModel *event = [events objectAtIndex:[indexPath row]];
-    //[[EventViewController alloc]init];
-    NSLog(@"%@",event);
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"CommentCell";
-    
-    EventModel *event = [events objectAtIndex:[indexPath row]];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        
-    }
-    
-    [[cell textLabel] setText:event.eventTitle];
-    return cell;
 }
 - (void)didReceiveMemoryWarning
 {
