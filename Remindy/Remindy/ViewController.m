@@ -7,16 +7,20 @@
 //
 
 #import "ViewController.h"
+#import "AFJSONRequestOperation.h"
 
 @interface ViewController ()
 @end
 
 @implementation ViewController
-@synthesize eventTableView,events,loginView;
+
+@synthesize eventTableView,events,loginView,myCache;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    myCache = [[NSCache alloc] init]; 
+    NSLog(@"token %@",[myCache objectForKey:@"token"]);
     
 	NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
     
@@ -30,6 +34,7 @@
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
 	[loginView loadRequest:request];
+    loginView.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
     events = [[NSMutableArray alloc] init];
     events[0] = [[EventModel alloc] initWith:@"First Event"];
@@ -78,10 +83,17 @@
 				NSString *token = [NSString stringWithContentsOfURL:responseURL
 														   encoding:NSASCIIStringEncoding
 															  error:&error];
-				
 				//print out the token or save for next logon or to navigate to next API call.
-				[[NSCache alloc] setObject:token forKey:@"token"];
-                NSLog(@"token %@",[[NSCache alloc]objectForKey:@"token"]);
+				[myCache setObject:token forKey:@"token"];
+                [self getUid];
+                [self getModules];
+               /* NSString *content = [NSString stringWithContentsOfURL:url];
+                NSLog(@"content%@",content);
+                NSString *moduleUrlString =[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=%@&AuthToken=%@&Duration=%d&IncludeAllInfo=%@", apikey, token,1000,@"true"];
+                url = [NSURL URLWithString:moduleUrlString];
+                content = [NSString stringWithContentsOfURL:url];
+                NSLog(@"content%@",content);*/
+                
 			}
             
             
@@ -89,7 +101,31 @@
 	}
     
 }
+- (void)getUid{
+    NSString *token=[myCache objectForKey:@"token"];
+    NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
+    NSString *useridUrlString = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserID_Get?APIKey=%@&Token=%@", apikey, token];
+    NSURL *url = [NSURL URLWithString:useridUrlString];
+    NSLog(@"getting uid");
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"uid: %@", JSON);
+    } failure:nil];
+    [operation start];
 
+}
+- (void)getModules{
+    NSString *token=[myCache objectForKey:@"token"];
+    NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
+    NSString *moduleUrlString = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=%@&AuthToken=%@&Duration=%d&IncludeAllInfo=%@", apikey, token,1000,@"true"];
+    NSURL *url = [NSURL URLWithString:moduleUrlString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        NSLog(@"Module Information: %@", JSON);
+    } failure:nil];
+    [operation start];
+    
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
