@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4910CEE817887799001633B0 /* serverUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC3A2D17885C5600680735 /* serverUtil.m */; };
 		49AC3A19178859E100680735 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A18178859E100680735 /* Parse.framework */; };
 		49AC3A1B17885AC800680735 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A1A17885AC800680735 /* AudioToolbox.framework */; };
 		49AC3A1D17885AD100680735 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A1C17885AD100680735 /* CFNetwork.framework */; };
@@ -135,9 +136,9 @@
 				CF8AA8361776E27800688642 /* AppDelegate.m */,
 				CF8AA83E1776E27800688642 /* MainStoryboard.storyboard */,
 				CF8AA8411776E27800688642 /* ViewController.h */,
+				CF8AA8421776E27800688642 /* ViewController.m */,
 				CF06967D1788764100C3F498 /* ModuleViewController.h */,
 				CF06967E1788764100C3F498 /* ModuleViewController.m */,
-				CF8AA8421776E27800688642 /* ViewController.m */,
 				CF8AA82D1776E27800688642 /* Supporting Files */,
 				CF2E448C177768C4006B0F57 /* EventModel.h */,
 				CF2E448D177768C4006B0F57 /* EventModel.m */,
@@ -227,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4910CEE817887799001633B0 /* serverUtil.m in Sources */,
 				CF8AA8331776E27800688642 /* main.m in Sources */,
 				CF8AA8371776E27800688642 /* AppDelegate.m in Sources */,
 				CF8AA8431776E27800688642 /* ViewController.m in Sources */,

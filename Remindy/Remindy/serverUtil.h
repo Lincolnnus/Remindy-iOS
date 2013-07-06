@@ -16,8 +16,7 @@
 + (void)             user:(NSString *) matricNumber addEvent:(EventModel*) event;
 
 // User clicked "Agree" or "Disagree" button:
-+ (void) user:(NSString *) matricNumber agreesEventWithID:(NSString*) eventID;
-+ (void) user:(NSString *) matricNumber disagreesEventWithID:(NSString *)eventID;
++ (void) user:(NSString *) matricNumber agrees: (BOOL) isAgreed EventWithID:(NSString*) eventID;
 
 // Has the user typed "Agree" or "Disagree" button before?
 // The return is YES or NO
@@ -25,7 +24,5 @@
 + (BOOL) user:(NSString *) matricNumber didDisagreedEventWithID:(NSString *)eventID;
 
 + (NSArray*) retrieveAllEventsOfModule:(NSString *) moduleCode;
-
-+ (void) testServerUtil;
 
 @end
