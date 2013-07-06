@@ -9,7 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface EventModel : NSObject
-@property (nonatomic) NSString *title;
 
--(id) initWith:(NSString*)title;
+@property (nonatomic) NSString *moduleCode;
+@property (nonatomic) NSString *eventTitle;
+@property (nonatomic) NSString *description;
+@property (nonatomic) NSDate *deadline;
+
+
+-(id) initWithModuleCode: (NSString *) mc
+           andEventTitle: (NSString *) et
+          andDescription: (NSString *) desc
+             andDeadline: (NSDate *) dead;
 @end

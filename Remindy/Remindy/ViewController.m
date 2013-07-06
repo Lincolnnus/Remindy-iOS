@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "AFJSONRequestOperation.h"
+//#import "AFJSONRequestOperation.h"
 
 @interface ViewController ()
 @end
@@ -37,7 +37,6 @@
     loginView.delegate = self;
     // Do any additional setup after loading the view, typically from a nib.
     events = [[NSMutableArray alloc] init];
-    events[0] = [[EventModel alloc] initWith:@"First Event"];
     eventTableView.dataSource = self;
     eventTableView.delegate = self;
 }
@@ -107,23 +106,21 @@
     NSString *useridUrlString = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserID_Get?APIKey=%@&Token=%@", apikey, token];
     NSURL *url = [NSURL URLWithString:useridUrlString];
     NSLog(@"getting uid");
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"uid: %@", JSON);
-    } failure:nil];
-    [operation start];
-
+    NSString *uid = [NSString stringWithContentsOfURL:url];
+    NSLog(@"uid%@",uid);
 }
 - (void)getModules{
     NSString *token=[myCache objectForKey:@"token"];
     NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
     NSString *moduleUrlString = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=%@&AuthToken=%@&Duration=%d&IncludeAllInfo=%@", apikey, token,1000,@"true"];
     NSURL *url = [NSURL URLWithString:moduleUrlString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    /*NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSLog(@"Module Information: %@", JSON);
     } failure:nil];
-    [operation start];
+    [operation start];*/
+    NSString *content = [NSString stringWithContentsOfURL:url];
+    NSLog(@"content%@",content);
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -154,7 +151,7 @@
         
     }
     
-    [[cell textLabel] setText:event.title];
+    [[cell textLabel] setText:event.eventTitle];
     return cell;
 }
 - (void)didReceiveMemoryWarning
