@@ -120,6 +120,7 @@
     } failure:nil];
     [operation start];*/
     NSString *content = [NSString stringWithContentsOfURL:url];
+    
     NSLog(@"content%@",content);
     
 }
