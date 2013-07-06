@@ -9,5 +9,9 @@
 #import "EventModel.h"
 
 @implementation EventModel
-
+@synthesize title;
+-(id) initWith:(NSString *)t{
+    if (self = [super init]) {title = t;}
+    return self;
+}
 @end

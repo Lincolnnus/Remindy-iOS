@@ -19,6 +19,8 @@
 		CF8AA83D1776E27800688642 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8AA83C1776E27800688642 /* Default-568h@2x.png */; };
 		CF8AA8401776E27800688642 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8AA83E1776E27800688642 /* MainStoryboard.storyboard */; };
 		CF8AA8431776E27800688642 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8AA8421776E27800688642 /* ViewController.m */; };
+		CFFD3DFC177D33F1002C1ADE /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFD3DFA177D33F1002C1ADE /* EventViewController.m */; };
+		CFFD3DFD177D33F1002C1ADE /* EventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFFD3DFB177D33F1002C1ADE /* EventViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,9 @@
 		CF8AA83F1776E27800688642 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CF8AA8411776E27800688642 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CF8AA8421776E27800688642 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CFFD3DF9177D33F1002C1ADE /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventViewController.h; sourceTree = "<group>"; };
+		CFFD3DFA177D33F1002C1ADE /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventViewController.m; sourceTree = "<group>"; };
+		CFFD3DFB177D33F1002C1ADE /* EventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +99,9 @@
 				CF8AA82D1776E27800688642 /* Supporting Files */,
 				CF2E448C177768C4006B0F57 /* EventModel.h */,
 				CF2E448D177768C4006B0F57 /* EventModel.m */,
+				CFFD3DF9177D33F1002C1ADE /* EventViewController.h */,
+				CFFD3DFA177D33F1002C1ADE /* EventViewController.m */,
+				CFFD3DFB177D33F1002C1ADE /* EventViewController.xib */,
 			);
 			path = Remindy;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 				CF8AA83B1776E27800688642 /* Default@2x.png in Resources */,
 				CF8AA83D1776E27800688642 /* Default-568h@2x.png in Resources */,
 				CF8AA8401776E27800688642 /* MainStoryboard.storyboard in Resources */,
+				CFFD3DFD177D33F1002C1ADE /* EventViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +191,7 @@
 				CF8AA8371776E27800688642 /* AppDelegate.m in Sources */,
 				CF8AA8431776E27800688642 /* ViewController.m in Sources */,
 				CF2E448E177768C5006B0F57 /* EventModel.m in Sources */,
+				CFFD3DFC177D33F1002C1ADE /* EventViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
