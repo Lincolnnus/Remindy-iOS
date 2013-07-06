@@ -10,6 +10,12 @@
 #import "EventModel.h"
 #import <Parse/Parse.h>
 
+typedef enum {
+    kAGREED,
+    kDISAGREED,
+    kUNKNOWN // The user hasn't made the decision yet.
+} AgreeType ;
+
 @interface serverUtil : NSObject
 
 // User creates a new event:
@@ -20,9 +26,11 @@
 
 // Has the user typed "Agree" or "Disagree" button before?
 // The return is YES or NO
-+ (BOOL) user:(NSString *) matricNumber didAgreeEventWithID:(NSString *)eventID;
-+ (BOOL) user:(NSString *) matricNumber didDisagreedEventWithID:(NSString *)eventID;
++ (void) user:(NSString *) matricNumber isAgreeWithEventWithID:(NSString *)eventID;
 
 + (NSArray*) retrieveAllEventsOfModule:(NSString *) moduleCode;
+
++ (int) getNumOfAgreesOfEvent: (NSString *) eventID;
++ (int) getNumOfDisagreesOfEvent: (NSString *) eventID;
 
 @end
