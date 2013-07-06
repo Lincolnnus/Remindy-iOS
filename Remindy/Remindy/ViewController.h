@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EventModel.h"
 #import "EventViewController.h"
+#import "serverUtil.h";
 
 @interface ViewController : UIViewController<UITableViewDelegate, UITableViewDataSource,UIWebViewDelegate>
 @property (strong, nonatomic) IBOutlet UIWebView *loginView;
