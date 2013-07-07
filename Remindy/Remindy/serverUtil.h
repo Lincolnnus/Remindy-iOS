@@ -28,7 +28,7 @@ typedef enum {
 // The return is YES or NO
 + (void) user:(NSString *) matricNumber isAgreeWithEventWithID:(NSString *)eventID;
 
-+ (NSArray*) retrieveAllEventsOfModule:(NSString *) moduleCode;
++ (void) retrieveAllEventsOfModule:(NSString *) moduleCode;
 
 + (int) getNumOfAgreesOfEvent: (NSString *) eventID;
 + (int) getNumOfDisagreesOfEvent: (NSString *) eventID;

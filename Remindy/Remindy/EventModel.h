@@ -15,9 +15,14 @@
 @property (nonatomic) NSString *description;
 @property (nonatomic) NSDate *deadline;
 
+// The following is not compulsory
+@property (nonatomic) NSString *eventID;
+
 
 -(id) initWithModuleCode: (NSString *) mc
            andEventTitle: (NSString *) et
           andDescription: (NSString *) desc
              andDeadline: (NSDate *) dead;
+
+-(void) setEventID:(NSString*)eID;
 @end

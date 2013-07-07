@@ -9,7 +9,7 @@
 #import "EventModel.h"
 
 @implementation EventModel
-@synthesize moduleCode, eventTitle, description, deadline;
+@synthesize moduleCode, eventTitle, description, deadline, eventID;
 
 -(id) initWithModuleCode: (NSString *) mc
            andEventTitle: (NSString *) et
@@ -24,5 +24,10 @@
     }
     return self;
 }
+
+-(void) setEventID:(NSString*)eID{
+    eventID = eID;
+}
+
 
 @end
