@@ -17,7 +17,7 @@
 // User creates a new event:
 + (void) user:(NSString *) matricNumber addEvent:(EventModel*) event{
     
-    PFObject *newEvent = [PFObject objectWithClassName:@"EventModel"];
+    PFObject *newEvent = [PFObject objectWithClassName:@"event"];
     
     [newEvent setObject:event.moduleCode forKey:@"moduleCode"];
     [newEvent setObject:event.deadline forKey:@"deadline"];

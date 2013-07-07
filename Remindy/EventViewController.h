@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface EventViewController : UITableViewController
+@interface EventViewController : PFQueryTableViewController
 @property (nonatomic) NSString *moduleCode;
 
 -(void) setModuleCode:(NSString *)code;
