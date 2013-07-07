@@ -30,7 +30,6 @@ typedef enum {
 
 + (void) retrieveAllEventsOfModule:(NSString *) moduleCode;
 
-+ (int) getNumOfAgreesOfEvent: (NSString *) eventID;
-+ (int) getNumOfDisagreesOfEvent: (NSString *) eventID;
++ (void) getNumOfAgreesAndDisagreesOfEvent: (NSString *) eventID;
 
 @end

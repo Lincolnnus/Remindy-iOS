@@ -10,6 +10,7 @@
 
 #define NOTIF_AGREE_OR_DISAGREE @"NOTIF_AGREE_OR_DISAGREE"
 #define NOTIF_EVENT_OF_MODULE_RETRIEVED @"NOTIF_EVENT_OF_MODULE_RETRIEVED"
+#define NOTIF_NUM_AGREE_DISAGREE_RETRIEVED @"NOTIF_NUM_AGREE_DISAGREE_RETRIEVED"
 
 @implementation serverUtil
 
@@ -141,50 +142,44 @@
     }];
 }
 
-+ (int) getNumOfAgreesOfEvent: (NSString *) eventID{
++ (void) getNumOfAgreesAndDisagreesOfEvent: (NSString *) eventID{
     
     PFQuery *query = [PFQuery queryWithClassName:@"event"];
-    
-//    [query whereKey:@"moduleCode" equalTo:moduleCode];
-//    
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            
-//            // The find succeeded.
-//            
-//            // Create a dictionary to be passed around:
-//            NSArray *values = [[NSArray alloc] initWithObjects: moduleCode, nil];
-//            NSArray *keys = [[NSArray alloc] initWithObjects:@"moduleCode", nil];
-//            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
-//            
-//            NSMutableArray *eventList = [[NSMutableArray alloc]init];
-//            for (PFObject *object in objects) {
-//                NSLog(@"%@", object.objectId);
-//                EventModel *newEvent = [[EventModel alloc] initWithModuleCode:moduleCode
-//                                                                andEventTitle:[object objectForKey:@"eventTitle"]
-//                                                               andDescription:[object objectForKey:@"description"]
-//                                                                  andDeadline:[object objectForKey:@"deadline"]];
-//                [eventList addObject:newEvent];
-//            }
-//            
-//            [userInfo setObject:eventList forKey:@"eventList"];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_EVENT_OF_MODULE_RETRIEVED object:nil userInfo:userInfo];
-//            
-//            
-//        } else {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
-//    
-//    return 0;
+    [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:YES]];
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            // The count request succeeded. Log the count
+            NSLog(@"The event of ID %@ has %d agrees", eventID, count);
+            
+            // Create a dictionary to be passed around:
+            NSArray *values = [[NSArray alloc] initWithObjects: eventID, [NSNumber numberWithInt:count], nil];
+            NSArray *keys = [[NSArray alloc] initWithObjects:@"eventID", @"agreeCount", nil];
+            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
+            
+            [self addNumOfDisagreesOfEvent: eventID toDictionary:userInfo];
+            
+        } else {
+            NSLog(@"Query of counting agrees failed");
+        }
+    }];
 }
 
-+ (int) getNumOfDisagreesOfEvent: (NSString *) eventID{
-    
-    
-    
-    return 0;
+// Helper function.
++ (void) addNumOfDisagreesOfEvent: (NSString *) eventID toDictionary: (NSMutableDictionary *) userInfo{
+    PFQuery *query = [PFQuery queryWithClassName:@"event"];
+    [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:NO]];
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            // The count request succeeded. Log the count
+            NSLog(@"The event of ID %@ has %d disagrees", eventID, count);
+            
+            [userInfo setObject: [NSNumber numberWithInt: count] forKey:@"disagreeCount"];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NUM_AGREE_DISAGREE_RETRIEVED object:nil userInfo:userInfo];
+        } else {
+            NSLog(@"Query of counting disagrees failed");
+        }
+    }];
 }
 
 @end
