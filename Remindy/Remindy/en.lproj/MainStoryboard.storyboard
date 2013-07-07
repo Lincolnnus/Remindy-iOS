@@ -4,6 +4,22 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="LKj-Dm-TCp">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="nP7-w4-nUT" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QzO-zV-nzN"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tnv-4q-GXj">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="km4-TF-mMG" kind="modal" identifier="navView" id="bjM-0S-eXr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bdh-mn-fMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-275" y="515"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="5">
             <objects>
@@ -26,12 +42,15 @@
                             <constraint firstItem="q7W-66-iY0" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="awy-Uv-PtQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="D5Q-KV-Pv1"/>
                     <connections>
                         <outlet property="loginView" destination="q7W-66-iY0" id="9Rk-WC-dLi"/>
+                        <segue destination="km4-TF-mMG" kind="modal" identifier="showModuleView" id="QIr-FH-6hs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-287" y="-159"/>
         </scene>
         <!--Module View Controller-->
         <scene sceneID="PwQ-hS-k3Q">
@@ -43,25 +62,24 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kCo-QB-Hjm">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="PGo-rN-7O8"/>
-                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="leading" secondItem="BTO-Ud-UMo" secondAttribute="leading" constant="-7" id="Q62-6r-gLb"/>
-                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="bottom" secondItem="BTO-Ud-UMo" secondAttribute="bottom" type="default" id="iLm-uL-saB"/>
-                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="top" secondItem="BTO-Ud-UMo" secondAttribute="top" type="default" id="wlG-Di-Bzv"/>
+                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="bottom" secondItem="BTO-Ud-UMo" secondAttribute="bottom" type="default" id="1iU-4V-OIr"/>
+                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="trailing" secondItem="BTO-Ud-UMo" secondAttribute="trailing" type="default" id="jd0-Wv-tMm"/>
+                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="top" secondItem="BTO-Ud-UMo" secondAttribute="top" type="default" id="vde-r4-w6V"/>
+                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="leading" secondItem="BTO-Ud-UMo" secondAttribute="leading" type="default" id="xmh-Ff-Ydk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="91a-bt-OAu"/>
                     <connections>
                         <outlet property="moduleTableView" destination="kCo-QB-Hjm" id="Qsg-ha-DJa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1XT-te-SAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="586" y="-1"/>
+            <point key="canvasLocation" x="270" y="79"/>
         </scene>
     </scenes>
     <classes>
@@ -86,4 +104,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="QIr-FH-6hs"/>
+    </inferredMetricsTieBreakers>
 </document>

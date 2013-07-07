@@ -13,6 +13,7 @@
 @interface ViewController : UIViewController<UIWebViewDelegate,NSURLConnectionDelegate>
 
 @property (nonatomic) NSCache *myCache;
+@property (nonatomic, strong) NSMutableData *moduleData;
 
 @property (strong, nonatomic) IBOutlet UIWebView *loginView;
 

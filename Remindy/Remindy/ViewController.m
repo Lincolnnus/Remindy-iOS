@@ -15,7 +15,7 @@
 
 @implementation ViewController
 
-@synthesize loginView,myCache;
+@synthesize loginView,myCache,moduleData;
 
 - (void)viewDidLoad
 {
@@ -83,16 +83,7 @@
 				[myCache setObject:token forKey:@"token"];
                 [self getUid];
                 [self getModules];
-               /* NSString *content = [NSString stringWithContentsOfURL:url];
-                NSLog(@"content%@",content);
-                NSString *moduleUrlString =[NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=%@&AuthToken=%@&Duration=%d&IncludeAllInfo=%@", apikey, token,1000,@"true"];
-                url = [NSURL URLWithString:moduleUrlString];
-                content = [NSString stringWithContentsOfURL:url];
-                NSLog(@"content%@",content);*/
-                
 			}
-            
-            
         }
 	}
     
@@ -112,28 +103,16 @@
     NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
     NSString *moduleUrlString = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=%@&AuthToken=%@&Duration=%d&IncludeAllInfo=%@", apikey, token,1000,@"true"];
     NSURL *url = [NSURL URLWithString:moduleUrlString];
-    /*NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        NSLog(@"Module Information: %@", JSON);
-    } failure:nil];
-    [operation start];*/
-    NSString *content = [NSString stringWithContentsOfURL:url];
     
-    NSLog(@"content%@",content);
-    
-    NSData *jsonData = [content dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSError *error = nil;
-    NSDictionary *myModules = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-    
-    if(!myModules) {
-        NSLog(@"%@",error);
-    }
-    else {
-        //Do Something
-        NSLog(@"%@", myModules);
-        [myCache setObject:myModules forKey:@"modules"];
-        [self performSegueWithIdentifier:@"segue1" sender:myString];
+    moduleData = [NSMutableData data];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if (theConnection) {
+        // Create the NSMutableData to hold the received data.
+        // receivedData is an instance variable declared elsewhere.
+        moduleData = [NSMutableData data];
+    } else {
+        // Inform the user that the connection failed.
     }
     
 }
@@ -145,7 +124,38 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showModuleView"]) {
         ModuleViewController *destViewController = segue.destinationViewController;
-        destViewController.modules = [myCache objectForKey:@"modules"];
+        destViewController.modules =[myCache objectForKey:@"modules"];
     }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"didReceiveResponse");
+    [moduleData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"receivedData");
+    [moduleData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError");
+    NSLog(@"Connection failed: %@", [error description]);
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"connectionDidFinishLoading");
+    
+    // convert to JSON
+    NSError *myError = nil;
+    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:moduleData options:NSJSONReadingMutableLeaves error:&myError];
+    
+    // extract specific value...
+    NSArray *results = [res objectForKey:@"Results"];
+    [myCache setObject:results forKey:@"modules"];
+    [self performSegueWithIdentifier:@"showModuleView" sender:self];
+    
+}
+- (void)viewDidUnload {
+    [super viewDidUnload];
 }
 @end
