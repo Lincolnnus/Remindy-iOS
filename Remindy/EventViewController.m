@@ -13,7 +13,7 @@
 @end
 
 @implementation EventViewController
-@synthesize module;
+@synthesize moduleCode;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -116,6 +116,9 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+-(void) setModuleCode:(NSString *)code{
+    moduleCode = code;
 }
 
 @end

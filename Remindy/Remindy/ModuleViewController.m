@@ -54,6 +54,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedModule =[modules objectAtIndex:[indexPath row]];
+    NSLog(@"%@",selectedModule);
     [self performSegueWithIdentifier:@"showEventView" sender:self];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +73,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showEventView"]) {
         EventViewController *destViewController = segue.destinationViewController;
-        destViewController.module =selectedModule;
+        destViewController = [[EventViewController alloc]init];
+        [destViewController setModuleCode:[selectedModule objectForKey:@"CourseCode"]];
     }
 }
 @end

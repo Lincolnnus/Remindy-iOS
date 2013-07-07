@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface EventViewController : UITableViewController
-@property (nonatomic) NSDictionary *module;
+@property (nonatomic) NSString *moduleCode;
+
+-(void) setModuleCode:(NSString *)code;
 @end
