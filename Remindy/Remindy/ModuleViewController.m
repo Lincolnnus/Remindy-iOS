@@ -28,6 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    moduleTableView.dataSource = self;
+    moduleTableView.delegate = self;
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -55,16 +58,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"ModuleCell";
-    
-    NSString *module = [modules objectAtIndex:[indexPath row]];
+    NSDictionary *module = [modules objectAtIndex:[indexPath row]];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         
     }
-    
-    [[cell textLabel] setText:module];
+    [[cell textLabel] setText:[module objectForKey:@"CourseCode"]];
     return cell;
 }
 @end
