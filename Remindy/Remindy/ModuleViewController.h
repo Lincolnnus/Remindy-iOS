@@ -11,4 +11,5 @@
 @interface ModuleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *moduleTableView;
 @property (nonatomic) NSArray *modules;
+@property (nonatomic) NSDictionary *selectedModule;
 @end

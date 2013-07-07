@@ -7,6 +7,7 @@
 //
 
 #import "ModuleViewController.h"
+#import "EventViewController.h"
 
 @interface ModuleViewController ()
 
@@ -14,7 +15,7 @@
 
 @implementation ModuleViewController
 
-@synthesize modules,moduleTableView;
+@synthesize modules,moduleTableView,selectedModule;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,8 +53,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //[[EventViewController alloc]init];
-    NSLog(@"%@",[modules objectAtIndex:[indexPath row]]);
+    selectedModule =[modules objectAtIndex:[indexPath row]];
+    NSLog(@"%@",selectedModule);
+    [self performSegueWithIdentifier:@"showEventView" sender:self];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -67,5 +69,12 @@
     }
     [[cell textLabel] setText:[module objectForKey:@"CourseCode"]];
     return cell;
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showEventView"]) {
+        EventViewController *destViewController = segue.destinationViewController;
+        destViewController = [[EventViewController alloc]init];
+        [destViewController setModuleCode:[selectedModule objectForKey:@"CourseCode"]];
+    }
 }
 @end
