@@ -15,12 +15,12 @@
 @implementation EventViewController
 @synthesize moduleCode;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithStyle:style];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         // Custom the table
-        moduleCode = [[NSString alloc]init];
+
         // The className to query on
         self.parseClassName = @"event";
         
@@ -43,7 +43,12 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"View 333333");
+
     [super viewDidLoad];
+    
+    NSLog(@"View 222222");
+
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -54,7 +59,10 @@
 
 - (void)viewDidUnload
 {
+    NSLog(@"View asdfasdf");
+
     [super viewDidUnload];
+    NSLog(@"View hahahahahaha");
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

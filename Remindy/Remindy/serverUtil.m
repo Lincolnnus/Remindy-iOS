@@ -30,7 +30,7 @@
 // User clicked "Agree" or "Disagree" button:
 + (void) user:(NSString *) matricNumber agrees: (BOOL) isAgreed EventWithID:(NSString*) eventID{
     
-    PFObject *newAgreeOrDisagree = [PFObject objectWithClassName:@"event"];
+    PFObject *newAgreeOrDisagree = [PFObject objectWithClassName:@"agreeAndDisagree"];
     
     [newAgreeOrDisagree setObject:matricNumber forKey:@"matricNumber"];
     [newAgreeOrDisagree setObject:[NSNumber numberWithBool:isAgreed] forKey:@"isAgreed"];
@@ -42,7 +42,7 @@
 // Has the user typed "Agree" or "Disagree" button before?
 // The return is YES or NO
 
-/* TODO Register for the notification center:
+/* The way to do it Register for the notification center:
  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivesAgreementNotification:) name:NOTIF_AGREE_OR_DISAGREE object:nil];
  
  - (void) receivesAgreementNotification:(NSNotification *) notification

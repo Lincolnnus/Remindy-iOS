@@ -36,6 +36,8 @@
     
 	[loginView loadRequest:request];
     loginView.delegate = self;
+    
+    [self serverUtilTest];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -157,5 +159,30 @@
 }
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+- (void)serverUtilTest{
+    // User creates a new event:
+    
+    //[serverUtil user: @"a0091726" addEvent:[[EventModel alloc] initWithModuleCode:@"iCMC2013" andEventTitle:@"Assignment 1" andDescription:@"Hand written" andDeadline:[NSDate date]]];
+    [serverUtil user: @"a0091730" addEvent:[[EventModel alloc] initWithModuleCode:@"iCMC2013" andEventTitle:@"Assignment 2" andDescription:@"Submit to the office" andDeadline:[NSDate date]]];
+    
+    // User clicked "Agree" or "Disagree" button:
+    
+    //[serverUtil user: @"a0091726" agrees: YES EventWithID:@"lVqcQoucLf"];
+    //[serverUtil user: @"a0091728" agrees: YES EventWithID:@"lVqcQoucLf"];
+    //[serverUtil user: @"a0091727" agrees: NO EventWithID:@"lVqcQoucLf"];
+    
+    //[serverUtil user: @"a0091729" agrees: NO EventWithID:@"Qq3WJacMNP"];
+    //[serverUtil user: @"a0091730" agrees: YES EventWithID:@"Qq3WJacMNP"];
+
+    
+    // Has the user typed "Agree" or "Disagree" button before?
+    // The return is YES or NO
+//    BOOL user:(NSString *) matricNumber isAgreeWithEventWithID:(NSString *)eventID;
+//    
+//    + (void) retrieveAllEventsOfModule:(NSString *) moduleCode;
+//    
+//    + (void) getNumOfAgreesAndDisagreesOfEvent: (NSString *) eventID;
 }
 @end
