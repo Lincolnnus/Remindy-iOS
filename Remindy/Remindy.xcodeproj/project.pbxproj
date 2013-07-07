@@ -31,6 +31,7 @@
 		CF8AA83D1776E27800688642 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8AA83C1776E27800688642 /* Default-568h@2x.png */; };
 		CF8AA8401776E27800688642 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8AA83E1776E27800688642 /* MainStoryboard.storyboard */; };
 		CF8AA8431776E27800688642 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8AA8421776E27800688642 /* ViewController.m */; };
+		CFF42D7B178975250030A71A /* EventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF42D7A178975250030A71A /* EventViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,8 @@
 		CF8AA83F1776E27800688642 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CF8AA8411776E27800688642 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CF8AA8421776E27800688642 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CFF42D79178975250030A71A /* EventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventViewController.h; path = ../EventViewController.h; sourceTree = "<group>"; };
+		CFF42D7A178975250030A71A /* EventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventViewController.m; path = ../EventViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 		CF8AA82C1776E27800688642 /* Remindy */ = {
 			isa = PBXGroup;
 			children = (
+				CFF42D79178975250030A71A /* EventViewController.h */,
+				CFF42D7A178975250030A71A /* EventViewController.m */,
 				CF8AA8351776E27800688642 /* AppDelegate.h */,
 				CF8AA8361776E27800688642 /* AppDelegate.m */,
 				CF8AA83E1776E27800688642 /* MainStoryboard.storyboard */,
@@ -234,6 +239,7 @@
 				CF8AA8431776E27800688642 /* ViewController.m in Sources */,
 				CF2E448E177768C5006B0F57 /* EventModel.m in Sources */,
 				CF0696801788764100C3F498 /* ModuleViewController.m in Sources */,
+				CFF42D7B178975250030A71A /* EventViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

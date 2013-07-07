@@ -4,22 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="LKj-Dm-TCp">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="nP7-w4-nUT" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="QzO-zV-nzN"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tnv-4q-GXj">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="km4-TF-mMG" kind="modal" identifier="navView" id="bjM-0S-eXr"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bdh-mn-fMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-275" y="515"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="5">
             <objects>
@@ -50,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-287" y="-159"/>
+            <point key="canvasLocation" x="-276" y="58"/>
         </scene>
         <!--Module View Controller-->
         <scene sceneID="PwQ-hS-k3Q">
@@ -75,36 +59,32 @@
                     <navigationItem key="navigationItem" id="91a-bt-OAu"/>
                     <connections>
                         <outlet property="moduleTableView" destination="kCo-QB-Hjm" id="Qsg-ha-DJa"/>
+                        <segue destination="IF6-nv-Se2" kind="modal" identifier="showEventView" id="GJR-lV-P9s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1XT-te-SAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="270" y="79"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="eIS-e3-XlO">
+            <objects>
+                <viewController id="IF6-nv-Se2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QmJ-WM-ddB">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ktc-we-BES"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W3k-lQ-yOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="707" y="79"/>
+        </scene>
     </scenes>
-    <classes>
-        <class className="ModuleViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModuleViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="moduleTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="loginView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="QIr-FH-6hs"/>
-    </inferredMetricsTieBreakers>
 </document>
