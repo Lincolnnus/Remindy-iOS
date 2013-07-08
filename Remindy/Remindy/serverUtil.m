@@ -249,19 +249,13 @@
     [query whereKey:@"matricNumber" equalTo:matricNumber];
     [query whereKey:@"eventID" equalTo:eventID];
     
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d agreements.", objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                [object delete];
-            }
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    NSArray *objects = [query findObjects];
+    
+    // Do something with the found objects
+    for (PFObject *object in objects) {
+        [object delete];
+    }
+    
 }
 
 @end

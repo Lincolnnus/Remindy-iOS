@@ -70,7 +70,9 @@
         [serverUtil user:viewerMatricNumber agrees:NO EventWithID:eventID];
 
         if (agreed){
+            
             [thumbUpButton setImage:[UIImage imageNamed:@"thumb_up_grey.png"] forState:UIControlStateNormal];
+           
             agreed = NO;
         
             agreeNumLabel.text = [NSString stringWithFormat:@"%d", agreeNumLabel.text.integerValue - 1];
