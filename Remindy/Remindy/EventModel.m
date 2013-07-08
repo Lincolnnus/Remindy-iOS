@@ -25,9 +25,5 @@
     return self;
 }
 
--(void) setEventID:(NSString*)eID{
-    eventID = eID;
-}
-
 
 @end

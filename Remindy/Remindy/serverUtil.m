@@ -121,11 +121,45 @@
             
             NSMutableArray *eventList = [[NSMutableArray alloc]init];
             for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
                 EventModel *newEvent = [[EventModel alloc] initWithModuleCode:moduleCode
                                                                 andEventTitle:[object objectForKey:@"eventTitle"]
                                                                andDescription:[object objectForKey:@"description"]
                                                                   andDeadline:[object objectForKey:@"deadline"]];
+                newEvent.eventID = object.objectId;
+                
+                // Get Number of agrees:
+                PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
+                [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:YES]];
+                [query whereKey:@"eventID" equalTo:newEvent.eventID];
+                [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+                    if (!error) {
+                        // The count request succeeded. Log the count
+                        NSLog(@"In server Util: The event of ID %@ has %d agrees", newEvent.eventID, count);
+                        
+                        newEvent.numOfAgrees = count;
+                        
+                        
+                        // Get Number of Disagrees:
+                        PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
+                        [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:NO]];
+                        [query whereKey:@"eventID" equalTo:newEvent.eventID];
+                        
+                        [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+                            if (!error) {
+                                // The count request succeeded. Log the count
+                                NSLog(@"In server util: The event of ID %@ has %d disagrees", newEvent.eventID, count);
+                                newEvent.numOfDisagrees = count;
+                            } else {
+                                NSLog(@"Query of counting disagrees failed");
+                            }
+                        }];
+                        
+                    } else {
+                        NSLog(@"Query of counting agrees failed");
+                    }
+                }];
+                
+                
                 [eventList addObject:newEvent];
             }
             
@@ -139,6 +173,7 @@
         }
     }];
 }
+
 
 + (void) getNumOfAgreesAndDisagreesOfEvent: (NSString *) eventID{
     

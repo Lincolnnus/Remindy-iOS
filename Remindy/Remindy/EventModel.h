@@ -17,6 +17,8 @@
 
 // The following is not compulsory
 @property (nonatomic) NSString *eventID;
+@property (nonatomic) int numOfAgrees;
+@property (nonatomic) int numOfDisagrees;
 
 
 -(id) initWithModuleCode: (NSString *) mc
