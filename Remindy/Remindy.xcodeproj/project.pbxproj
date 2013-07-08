@@ -39,6 +39,7 @@
 		CFFA7D01178ABD0700BCCCC2 /* thumb_up_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFA7CFD178ABD0700BCCCC2 /* thumb_up_grey.png */; };
 		CFFA7D02178ABD0700BCCCC2 /* thumb_up.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFA7CFE178ABD0700BCCCC2 /* thumb_up.png */; };
 		CFFA7D03178ABD0700BCCCC2 /* thumb_down_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = CFFA7CFF178ABD0700BCCCC2 /* thumb_down_grey.png */; };
+		CFFA7D06178B05D600BCCCC2 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFA7D05178B05D600BCCCC2 /* AddEventViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,8 @@
 		CFFA7CFD178ABD0700BCCCC2 /* thumb_up_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_up_grey.png; sourceTree = "<group>"; };
 		CFFA7CFE178ABD0700BCCCC2 /* thumb_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_up.png; sourceTree = "<group>"; };
 		CFFA7CFF178ABD0700BCCCC2 /* thumb_down_grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumb_down_grey.png; sourceTree = "<group>"; };
+		CFFA7D04178B05D600BCCCC2 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
+		CFFA7D05178B05D600BCCCC2 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,8 @@
 				CFFA7CEF178A633900BCCCC2 /* EventTableCell.m */,
 				CFFA7CF9178A8D7800BCCCC2 /* EventViewController.h */,
 				CFFA7CFA178A8D7800BCCCC2 /* EventViewController.m */,
+				CFFA7D04178B05D600BCCCC2 /* AddEventViewController.h */,
+				CFFA7D05178B05D600BCCCC2 /* AddEventViewController.m */,
 			);
 			path = Remindy;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 				4995A766178A4CAB000488A6 /* constants.m in Sources */,
 				CFFA7CF0178A633900BCCCC2 /* EventTableCell.m in Sources */,
 				CFFA7CFB178A8D7800BCCCC2 /* EventViewController.m in Sources */,
+				CFFA7D06178B05D600BCCCC2 /* AddEventViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

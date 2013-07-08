@@ -90,7 +90,7 @@
                     <navigationItem key="navigationItem" title="All Events" id="dAi-gH-L8T">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GUp-4p-Qvu">
                             <connections>
-                                <segue destination="5v8-p4-Osm" kind="push" id="pwo-V4-QZ6"/>
+                                <segue destination="5v8-p4-Osm" kind="push" identifier="AddEventView" id="pwo-V4-QZ6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -103,27 +103,14 @@
             </objects>
             <point key="canvasLocation" x="1299" y="66"/>
         </scene>
-        <!--View Controller - Add New Event-->
+        <!--Add Event View Controller - Add New Event-->
         <scene sceneID="Ac8-ga-t1h">
             <objects>
-                <viewController id="5v8-p4-Osm" sceneMemberID="viewController">
+                <viewController id="5v8-p4-Osm" customClass="AddEventViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J8e-bh-8or">
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ag-yC-eRU">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="176" id="DYU-Fh-e3m"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Add">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn4-iP-kMt">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -141,7 +128,7 @@
                             </label>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-wa-wtt">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="3ZK-Gp-oGn"/>
+                                    <constraint firstAttribute="width" constant="324" id="HsB-N0-E2H"/>
                                     <constraint firstAttribute="height" constant="216" id="ahK-r8-zmu"/>
                                 </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="394973428.797005">
@@ -168,39 +155,53 @@ AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
                                 </timeZone>
+                                <connections>
+                                    <action selector="changeDate:" destination="5v8-p4-Osm" eventType="valueChanged" id="5cv-85-sI8"/>
+                                </connections>
                             </datePicker>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tNd-Jh-xM9">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="a8O-ta-aUk"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qhh-Cm-lut">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Hde-vI-WWd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="trailing" secondItem="tNd-Jh-xM9" secondAttribute="trailing" type="default" id="2SH-DI-3zr"/>
-                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="54" id="3AG-Ks-TxN"/>
-                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="bottom" secondItem="Wn4-iP-kMt" secondAttribute="bottom" type="default" id="8px-mx-RdF"/>
-                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="trailing" secondItem="Wn4-iP-kMt" secondAttribute="trailing" type="default" id="AF5-TJ-GYX"/>
-                            <constraint firstItem="uDU-wa-wtt" firstAttribute="centerX" secondItem="J8e-bh-8or" secondAttribute="centerX" type="default" id="Cwa-vi-07Z"/>
-                            <constraint firstItem="5ag-yC-eRU" firstAttribute="top" secondItem="uDU-wa-wtt" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DLL-xo-7Fi"/>
-                            <constraint firstItem="5ag-yC-eRU" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="69" id="EGa-QY-87g"/>
-                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="centerX" secondItem="PNP-Vy-zhg" secondAttribute="centerX" type="default" id="PTK-lY-UVg"/>
-                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="6" id="SLb-nO-ulY"/>
-                            <constraint firstItem="Wn4-iP-kMt" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="20" symbolic="YES" type="default" id="av8-Ux-9cY"/>
-                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="129" id="cgX-cu-eM9"/>
-                            <constraint firstItem="uDU-wa-wtt" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="105" id="mj4-Hr-bhL"/>
-                            <constraint firstItem="PNP-Vy-zhg" firstAttribute="top" secondItem="0LQ-Ia-hiL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="qxt-p0-iAj"/>
-                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="leading" secondItem="tNd-Jh-xM9" secondAttribute="leading" type="default" id="sYn-BF-FUR"/>
-                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="top" secondItem="0LQ-Ia-hiL" secondAttribute="top" type="default" id="y5P-00-5J3"/>
+                            <constraint firstItem="PNP-Vy-zhg" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="137" id="1Tm-Ff-xKR"/>
+                            <constraint firstItem="uDU-wa-wtt" firstAttribute="centerX" secondItem="J8e-bh-8or" secondAttribute="centerX" type="default" id="2dF-r6-mIF"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="leading" secondItem="PNP-Vy-zhg" secondAttribute="leading" type="default" id="3Jb-Wh-z66"/>
+                            <constraint firstItem="PNP-Vy-zhg" firstAttribute="centerX" secondItem="Wn4-iP-kMt" secondAttribute="centerX" type="default" id="GdF-Vm-SUc"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="4" id="LPD-JT-ulP"/>
+                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="trailing" secondItem="Qhh-Cm-lut" secondAttribute="trailing" type="default" id="Lxu-HT-cyE"/>
+                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="leading" secondItem="Qhh-Cm-lut" secondAttribute="leading" type="default" id="Prp-YD-m46"/>
+                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="top" secondItem="Wn4-iP-kMt" secondAttribute="top" type="default" id="QpK-c3-Uf8"/>
+                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="114" id="VHE-tB-OA1"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="baseline" secondItem="tNd-Jh-xM9" secondAttribute="baseline" type="default" id="b0P-3Q-pjJ"/>
+                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="87" id="j7e-fg-f39"/>
+                            <constraint firstItem="Wn4-iP-kMt" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="37" id="noH-eq-iOO"/>
+                            <constraint firstItem="uDU-wa-wtt" firstAttribute="top" secondItem="PNP-Vy-zhg" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="zy7-EI-fz3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add New Event" id="xwD-Qy-KFN"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Add New Event" id="xwD-Qy-KFN">
+                        <barButtonItem key="rightBarButtonItem" title="Confirm" id="uDI-So-CDJ">
+                            <connections>
+                                <action selector="addNewEvent:" destination="5v8-p4-Osm" id="bSn-Wx-Xbl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="description" destination="Qhh-Cm-lut" id="eiR-Ze-vzU"/>
+                        <outlet property="eventTitle" destination="tNd-Jh-xM9" id="81X-q9-jdK"/>
+                        <outlet property="myDateTime" destination="uDU-wa-wtt" id="z1C-XY-vUZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpH-9i-wdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -226,6 +227,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <classes>
+        <class className="AddEventViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addNewEvent:"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="eventTitle" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="myDateTime" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
         <class className="EventViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EventViewController.h"/>
             <relationships>
