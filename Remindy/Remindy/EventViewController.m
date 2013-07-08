@@ -122,5 +122,9 @@
         destViewController.moduleCode =moduleCode;
     }
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [eventTable reloadData];
+}
 
 @end

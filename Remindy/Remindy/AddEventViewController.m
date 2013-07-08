@@ -41,6 +41,7 @@
     [serverUtil user:uid addEvent:event];
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Successful!"                      message:@"New Event Create Successful"                      delegate:self               cancelButtonTitle:@"Cancel"otherButtonTitles:@"OK",nil];
         [alert show];
+    [self.navigationController popViewControllerAnimated:YES];
     }else{
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error Creating Events!"                        message:@"Please check the title and description" delegate:self
 cancelButtonTitle:@"Cancel"otherButtonTitles:@"OK",nil];
