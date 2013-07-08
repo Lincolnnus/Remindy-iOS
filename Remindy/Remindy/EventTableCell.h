@@ -15,5 +15,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *description;
 @property (strong, nonatomic) IBOutlet UILabel *numLike;
 @property (strong, nonatomic) IBOutlet UILabel *numDislike;
+@property (strong, nonatomic) IBOutlet UIButton *thumbUpButton;
+@property (strong, nonatomic) IBOutlet UIButton *thumbDownButton;
+@property (nonatomic) Boolean agreed;
+@property (nonatomic) Boolean disagreed;
 
 @end

@@ -51,10 +51,10 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"EventTableCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    
     // Configure the cell
     cell.eventTitle.text = event.eventTitle;
     cell.description.text = event.description;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-mm-dd"];
     
