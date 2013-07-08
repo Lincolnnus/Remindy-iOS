@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Login-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
@@ -26,7 +26,7 @@
                             <constraint firstItem="q7W-66-iY0" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="awy-Uv-PtQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="D5Q-KV-Pv1"/>
+                    <navigationItem key="navigationItem" title="Login" id="D5Q-KV-Pv1"/>
                     <connections>
                         <outlet property="loginView" destination="q7W-66-iY0" id="9Rk-WC-dLi"/>
                         <segue destination="km4-TF-mMG" kind="push" identifier="showModuleView" id="QIr-FH-6hs"/>
@@ -36,7 +36,7 @@
             </objects>
             <point key="canvasLocation" x="250" y="58"/>
         </scene>
-        <!--Module View Controller-->
+        <!--Module View Controller - All Modules-->
         <scene sceneID="PwQ-hS-k3Q">
             <objects>
                 <viewController id="km4-TF-mMG" customClass="ModuleViewController" sceneMemberID="viewController">
@@ -56,7 +56,7 @@
                             <constraint firstItem="kCo-QB-Hjm" firstAttribute="leading" secondItem="BTO-Ud-UMo" secondAttribute="leading" type="default" id="xmh-Ff-Ydk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="91a-bt-OAu"/>
+                    <navigationItem key="navigationItem" title="All Modules" id="91a-bt-OAu"/>
                     <connections>
                         <outlet property="moduleTableView" destination="kCo-QB-Hjm" id="Qsg-ha-DJa"/>
                         <segue destination="wat-OK-NSy" kind="push" identifier="showEventView" customClass="showEventView" id="pTM-6h-emh"/>
@@ -66,7 +66,7 @@
             </objects>
             <point key="canvasLocation" x="714" y="66"/>
         </scene>
-        <!--Event View Controller-->
+        <!--Event View Controller - All Events-->
         <scene sceneID="jC4-SB-Ij0">
             <objects>
                 <viewController id="wat-OK-NSy" customClass="EventViewController" sceneMemberID="viewController">
@@ -77,18 +77,37 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-f9-NHg">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="458" id="yvZ-JT-owZ"/>
+                                    <constraint firstAttribute="height" constant="380" id="jY8-Sp-54Y"/>
                                 </constraints>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ft-6f-Qtk">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="zJ9-Yh-prb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="+">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="5v8-p4-Osm" kind="push" id="p5H-yg-f2g"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TCN-f9-NHg" firstAttribute="trailing" secondItem="oGh-DR-uVU" secondAttribute="trailing" type="default" id="9nj-zb-1bD"/>
-                            <constraint firstItem="TCN-f9-NHg" firstAttribute="bottom" secondItem="oGh-DR-uVU" secondAttribute="bottom" type="default" id="TwQ-sZ-iV0"/>
                             <constraint firstItem="TCN-f9-NHg" firstAttribute="leading" secondItem="oGh-DR-uVU" secondAttribute="leading" type="default" id="cqs-Kk-Nq9"/>
+                            <constraint firstItem="3Ft-6f-Qtk" firstAttribute="top" secondItem="oGh-DR-uVU" secondAttribute="top" constant="9" id="crd-kh-9Wo"/>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="top" secondItem="oGh-DR-uVU" secondAttribute="top" constant="75" id="hPi-QI-1hE"/>
+                            <constraint firstItem="3Ft-6f-Qtk" firstAttribute="centerX" secondItem="TCN-f9-NHg" secondAttribute="centerX" type="default" id="oZX-mD-ciX"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="All Events" id="dAi-gH-L8T"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="eventTable" destination="TCN-f9-NHg" id="9u9-f6-tAd"/>
@@ -97,6 +116,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3l-y9-DfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1299" y="66"/>
+        </scene>
+        <!--View Controller - Add New Event-->
+        <scene sceneID="Ac8-ga-t1h">
+            <objects>
+                <viewController id="5v8-p4-Osm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J8e-bh-8or">
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ag-yC-eRU">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="176" id="DYU-Fh-e3m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn4-iP-kMt">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LQ-Ia-hiL">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="deadline:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNP-Vy-zhg">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-wa-wtt">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="3ZK-Gp-oGn"/>
+                                    <constraint firstAttribute="height" constant="216" id="ahK-r8-zmu"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="394973428.797005">
+                                    <!--2013-07-08 10:50:28 +0000-->
+                                </date>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <mutableData key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</mutableData>
+                                </timeZone>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tNd-Jh-xM9">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="a8O-ta-aUk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qhh-Cm-lut">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="trailing" secondItem="tNd-Jh-xM9" secondAttribute="trailing" type="default" id="2SH-DI-3zr"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="54" id="3AG-Ks-TxN"/>
+                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="bottom" secondItem="Wn4-iP-kMt" secondAttribute="bottom" type="default" id="8px-mx-RdF"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="trailing" secondItem="Wn4-iP-kMt" secondAttribute="trailing" type="default" id="AF5-TJ-GYX"/>
+                            <constraint firstItem="uDU-wa-wtt" firstAttribute="centerX" secondItem="J8e-bh-8or" secondAttribute="centerX" type="default" id="Cwa-vi-07Z"/>
+                            <constraint firstItem="5ag-yC-eRU" firstAttribute="top" secondItem="uDU-wa-wtt" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="DLL-xo-7Fi"/>
+                            <constraint firstItem="5ag-yC-eRU" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="69" id="EGa-QY-87g"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="centerX" secondItem="PNP-Vy-zhg" secondAttribute="centerX" type="default" id="PTK-lY-UVg"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="6" id="SLb-nO-ulY"/>
+                            <constraint firstItem="Wn4-iP-kMt" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="20" symbolic="YES" type="default" id="av8-Ux-9cY"/>
+                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="129" id="cgX-cu-eM9"/>
+                            <constraint firstItem="uDU-wa-wtt" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="105" id="mj4-Hr-bhL"/>
+                            <constraint firstItem="PNP-Vy-zhg" firstAttribute="top" secondItem="0LQ-Ia-hiL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="qxt-p0-iAj"/>
+                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="leading" secondItem="tNd-Jh-xM9" secondAttribute="leading" type="default" id="sYn-BF-FUR"/>
+                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="top" secondItem="0LQ-Ia-hiL" secondAttribute="top" type="default" id="y5P-00-5J3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Event" id="xwD-Qy-KFN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dpH-9i-wdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1759" y="76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cfD-ZS-FnR">
