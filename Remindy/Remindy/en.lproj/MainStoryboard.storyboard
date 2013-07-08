@@ -59,7 +59,7 @@
                     <navigationItem key="navigationItem" id="91a-bt-OAu"/>
                     <connections>
                         <outlet property="moduleTableView" destination="kCo-QB-Hjm" id="Qsg-ha-DJa"/>
-                        <segue destination="wat-OK-NSy" kind="modal" identifier="showEventView" id="pTM-6h-emh"/>
+                        <segue destination="wat-OK-NSy" kind="modal" identifier="showEventView" customClass="showEventView" id="pTM-6h-emh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1XT-te-SAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -77,19 +77,19 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-f9-NHg">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="548" id="sU5-QG-tfc"/>
+                                    <constraint firstAttribute="height" constant="379" id="lgS-KU-SJi"/>
                                 </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TCN-f9-NHg" firstAttribute="top" secondItem="oGh-DR-uVU" secondAttribute="top" constant="13" id="ZPk-WY-3Hy"/>
-                            <constraint firstItem="TCN-f9-NHg" firstAttribute="trailing" secondItem="oGh-DR-uVU" secondAttribute="trailing" type="default" id="mCO-yB-2oF"/>
-                            <constraint firstItem="TCN-f9-NHg" firstAttribute="leading" secondItem="oGh-DR-uVU" secondAttribute="leading" type="default" id="ulA-fa-Nfp"/>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="top" secondItem="oGh-DR-uVU" secondAttribute="top" constant="123" id="5Wp-4r-0Bt"/>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="trailing" secondItem="oGh-DR-uVU" secondAttribute="trailing" type="default" id="9nj-zb-1bD"/>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="centerX" secondItem="oGh-DR-uVU" secondAttribute="centerX" type="default" id="J78-Vw-JcO"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="eventTable" destination="TCN-f9-NHg" id="1Bo-BQ-e4W"/>
+                        <outlet property="eventTable" destination="TCN-f9-NHg" id="9u9-f6-tAd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3l-y9-DfE" userLabel="First Responder" sceneMemberID="firstResponder"/>

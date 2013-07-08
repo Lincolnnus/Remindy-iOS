@@ -41,11 +41,13 @@
     NSLog(@"selected");
 }
 
-- (EventTableCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"EventTableCell";
     EventModel *event = [eventList objectAtIndex:[indexPath row]];
-    EventTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSLog(@"Event%@",event);
+    
+    EventTableCell *cell = (EventTableCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"EventTableCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
@@ -62,11 +64,14 @@
     cell.moduleCode.text = event.moduleCode;
     NSLog(@"hoho");
     return cell;
+
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    eventTable.delegate = self;
+    eventTable.dataSource =self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,10 +82,6 @@
 
 - (void)setEventList:(NSMutableArray *)eList{
     eventList = eList;
-    //NSLog(@"elist%@",eList);
-    for (EventModel* event in eList) {
-        NSLog(@"Event title: %@ description: %@", event.eventTitle, event.description);
-    }
     [eventTable reloadData];
 }
 -(void) setModuleCode:(NSString *)code andUid:(NSString *)uid{

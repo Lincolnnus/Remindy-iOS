@@ -33,7 +33,6 @@
     [super viewDidLoad];
     moduleTableView.dataSource = self;
     moduleTableView.delegate = self;
-    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -76,9 +75,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showEventView"]) {
-        
-        destViewController = segue.destinationViewController;
         destViewController = [[EventViewController alloc] init];
+        destViewController = segue.destinationViewController;
         [destViewController setEventList:eventList];
     }
 }
