@@ -76,38 +76,24 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-f9-NHg">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="380" id="jY8-Sp-54Y"/>
-                                </constraints>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ft-6f-Qtk">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="248" id="zJ9-Yh-prb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="+">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="5v8-p4-Osm" kind="push" id="p5H-yg-f2g"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TCN-f9-NHg" firstAttribute="trailing" secondItem="oGh-DR-uVU" secondAttribute="trailing" type="default" id="9nj-zb-1bD"/>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="bottom" secondItem="oGh-DR-uVU" secondAttribute="bottom" type="default" id="TQL-ZB-YQJ"/>
                             <constraint firstItem="TCN-f9-NHg" firstAttribute="leading" secondItem="oGh-DR-uVU" secondAttribute="leading" type="default" id="cqs-Kk-Nq9"/>
-                            <constraint firstItem="3Ft-6f-Qtk" firstAttribute="top" secondItem="oGh-DR-uVU" secondAttribute="top" constant="9" id="crd-kh-9Wo"/>
-                            <constraint firstItem="TCN-f9-NHg" firstAttribute="top" secondItem="oGh-DR-uVU" secondAttribute="top" constant="75" id="hPi-QI-1hE"/>
-                            <constraint firstItem="3Ft-6f-Qtk" firstAttribute="centerX" secondItem="TCN-f9-NHg" secondAttribute="centerX" type="default" id="oZX-mD-ciX"/>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="top" secondItem="oGh-DR-uVU" secondAttribute="top" type="default" id="kc6-G5-Ccf"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="All Events" id="dAi-gH-L8T"/>
+                    <navigationItem key="navigationItem" title="All Events" id="dAi-gH-L8T">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GUp-4p-Qvu">
+                            <connections>
+                                <segue destination="5v8-p4-Osm" kind="push" id="pwo-V4-QZ6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="eventTable" destination="TCN-f9-NHg" id="9u9-f6-tAd"/>
@@ -162,7 +148,7 @@
                                     <!--2013-07-08 10:50:28 +0000-->
                                 </date>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <mutableData key="data">
+                                    <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -180,7 +166,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                 </timeZone>
                             </datePicker>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tNd-Jh-xM9">
