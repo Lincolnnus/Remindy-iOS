@@ -6,15 +6,10 @@
 //  Copyright (c) 2013 nus.cs3217. All rights reserved.
 //
 
+#import "constants.h"
+#import <Parse/Parse.h>
 #import <UIKit/UIKit.h>
 #import "EventModel.h"
-#import <Parse/Parse.h>
-
-typedef enum {
-    kAGREED,
-    kDISAGREED,
-    kUNKNOWN // The user hasn't made the decision yet.
-} AgreeType ;
 
 @interface serverUtil : NSObject
 
@@ -28,8 +23,10 @@ typedef enum {
 // The return is YES or NO
 + (void) user:(NSString *)matricNumber isAgreeWithEventWithID:(NSString *)eventID;
 
-+ (void) retrieveAllEventsOfModule:(NSString *) moduleCode;
++ (void) retrieveAllEventsOfModule:(NSString *) moduleCode withViewer:(NSString*) matricNumber;
 
 + (void) getNumOfAgreesAndDisagreesOfEvent: (NSString *) eventID;
+
++ (void) user: (NSString*)matricNumber cancelAgreeOrDisagreeOfEvent: (NSString*)eventID;
 
 @end

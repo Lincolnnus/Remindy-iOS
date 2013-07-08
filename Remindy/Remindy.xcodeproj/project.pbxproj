@@ -271,11 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2E448E177768C5006B0F57 /* EventModel.m in Sources */,
 				4910CEE817887799001633B0 /* serverUtil.m in Sources */,
 				CF8AA8331776E27800688642 /* main.m in Sources */,
 				CF8AA8371776E27800688642 /* AppDelegate.m in Sources */,
 				CF8AA8431776E27800688642 /* ViewController.m in Sources */,
-				CF2E448E177768C5006B0F57 /* EventModel.m in Sources */,
 				CF0696801788764100C3F498 /* ModuleViewController.m in Sources */,
 				4995A766178A4CAB000488A6 /* constants.m in Sources */,
 				CFFA7CF0178A633900BCCCC2 /* EventTableCell.m in Sources */,

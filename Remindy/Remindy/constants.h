@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    kAGREED,
+    kDISAGREED,
+    kUNKNOWN // The user hasn't made the decision yet.
+} AgreeType;
+
 @interface constants : NSObject
 
 extern NSString *NOTIF_AGREE_OR_DISAGREE;

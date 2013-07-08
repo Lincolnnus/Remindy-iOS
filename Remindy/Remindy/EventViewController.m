@@ -62,9 +62,29 @@
     cell.deadline.text = [formatter stringFromDate:event.deadline];
     cell.moduleCode.text = event.moduleCode;
     
-    NSLog(@"Agreeee: %d", event.numOfAgrees);
     cell.agreeNumLabel.text = [NSString stringWithFormat:@"%d", event.numOfAgrees];
     cell.disagreeNumLabel.text = [NSString stringWithFormat:@"%d", event.numOfDisagrees];
+    
+    cell.viewerMatricNumber = matricNumber;
+    cell.eventID = event.eventID;
+    
+    if (event.isCurrentViewerAgrees == kAGREED){
+                
+        cell.agreed = YES;
+        [cell.thumbUpButton setImage:[UIImage imageNamed:@"thumb_up.png"] forState:UIControlStateNormal];
+
+    }
+    else if (event.isCurrentViewerAgrees == kDISAGREED){
+                
+        cell.disagreed = YES;
+        [cell.thumbDownButton setImage:[UIImage imageNamed:@"thumb_down.png"] forState:UIControlStateNormal];
+
+    }
+    
+    else{
+        cell.agreed = NO;
+        cell.disagreed = NO;
+    }
     
     return cell;
 }

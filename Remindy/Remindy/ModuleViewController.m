@@ -57,7 +57,7 @@
     selectedModule =[modules objectAtIndex:[indexPath row]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retrievesEventNotification:) name:NOTIF_EVENT_OF_MODULE_RETRIEVED object:nil];
     
-    [serverUtil retrieveAllEventsOfModule:(NSString *)[selectedModule objectForKey:@"CourseCode"]];
+    [serverUtil retrieveAllEventsOfModule:(NSString *)[selectedModule objectForKey:@"CourseCode"] withViewer:uid];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

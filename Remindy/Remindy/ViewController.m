@@ -98,6 +98,12 @@
     NSURL *url = [NSURL URLWithString:useridUrlString];
     NSLog(@"getting uid");
     NSString *uid = [NSString stringWithContentsOfURL:url];
+    
+    NSMutableString *muid = [NSMutableString stringWithString:uid];
+    [muid replaceOccurrencesOfString:@"\"" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [muid length])];
+    
+    uid = [NSString stringWithString:muid];
+    
     [myCache setObject:uid forKey:@"uid"];
     NSLog(@"uid%@",uid);
 }

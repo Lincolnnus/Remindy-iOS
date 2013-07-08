@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
+#import "constants.h"
 
 @interface EventModel : NSObject
 
@@ -19,6 +21,8 @@
 @property (nonatomic) NSString *eventID;
 @property (nonatomic) int numOfAgrees;
 @property (nonatomic) int numOfDisagrees;
+@property (nonatomic) AgreeType isCurrentViewerAgrees;
+@property (nonatomic) PFObject *agreement;
 
 
 -(id) initWithModuleCode: (NSString *) mc

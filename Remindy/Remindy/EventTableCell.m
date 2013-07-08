@@ -7,9 +7,11 @@
 //
 
 #import "EventTableCell.h"
+#import "serverUtil.h"
 
 @implementation EventTableCell
-@synthesize eventTitle,deadline,description,moduleCode,numDislike,numLike,thumbDownButton,thumbUpButton,agreed,disagreed;
+@synthesize eventTitle,deadline,description,moduleCode,thumbDownButton,thumbUpButton,agreed,disagreed,viewerMatricNumber,eventID,agreeNumLabel,disagreeNumLabel,agreement;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -20,12 +22,13 @@
 }
 - (IBAction)thumbUpPressed:(id)sender {
     // Agreed before, cancel it:
-    
     if(agreed){
         
         [thumbUpButton setImage:[UIImage imageNamed:@"thumb_up_grey.png"] forState:UIControlStateNormal];
         agreed = NO;
+        [serverUtil user:viewerMatricNumber cancelAgreeOrDisagreeOfEvent:eventID];
         
+        agreeNumLabel.text = [NSString stringWithFormat:@"%d", agreeNumLabel.text.integerValue - 1];
     }
     
     else{
@@ -33,22 +36,45 @@
         
         agreed = YES;
         
-        [thumbDownButton setImage:[UIImage imageNamed:@"thumb_down_grey.png"] forState:UIControlStateNormal];
+        agreeNumLabel.text = [NSString stringWithFormat:@"%d", agreeNumLabel.text.integerValue + 1];
         
-        disagreed = NO;
+        [serverUtil user:viewerMatricNumber agrees:YES EventWithID:eventID];
+
+        if (disagreed){
+            
+            [thumbDownButton setImage:[UIImage imageNamed:@"thumb_down_grey.png"] forState:UIControlStateNormal];
+        
+            disagreed = NO;
+                        
+            disagreeNumLabel.text = [NSString stringWithFormat:@"%d", disagreeNumLabel.text.integerValue - 1];
+
+        }
     }
 }
+
+
 - (IBAction)thumbDownPressed:(id)sender {
     if(disagreed){
         [thumbDownButton setImage:[UIImage imageNamed:@"thumb_down_grey.png"] forState:UIControlStateNormal];
         disagreed = NO;
         
+        [serverUtil user:viewerMatricNumber cancelAgreeOrDisagreeOfEvent:eventID];
+        disagreeNumLabel.text = [NSString stringWithFormat:@"%d", disagreeNumLabel.text.integerValue - 1];
+
+        
     }else{
         [thumbDownButton setImage:[UIImage imageNamed:@"thumb_down.png"] forState:UIControlStateNormal];
         disagreed = YES;
+        disagreeNumLabel.text = [NSString stringWithFormat:@"%d", disagreeNumLabel.text.integerValue + 1];
+
+        [serverUtil user:viewerMatricNumber agrees:NO EventWithID:eventID];
+
+        if (agreed){
+            [thumbUpButton setImage:[UIImage imageNamed:@"thumb_up_grey.png"] forState:UIControlStateNormal];
+            agreed = NO;
         
-        [thumbUpButton setImage:[UIImage imageNamed:@"thumb_up_grey.png"] forState:UIControlStateNormal];
-        agreed = NO;
+            agreeNumLabel.text = [NSString stringWithFormat:@"%d", agreeNumLabel.text.integerValue - 1];
+        }
     }
 }
 
