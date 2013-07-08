@@ -12,7 +12,6 @@
 #import "constants.h"
 
 @interface EventViewController ()
-
 @end
 
 @implementation EventViewController
@@ -62,10 +61,14 @@
     [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Singapore"]];
     cell.deadline.text = [formatter stringFromDate:event.deadline];
     cell.moduleCode.text = event.moduleCode;
-    NSLog(@"hoho");
+    
+    NSLog(@"Agreeee: %d", event.numOfAgrees);
+    cell.agreeNumLabel.text = [NSString stringWithFormat:@"%d", event.numOfAgrees];
+    cell.disagreeNumLabel.text = [NSString stringWithFormat:@"%d", event.numOfDisagrees];
+    
     return cell;
-
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -89,14 +92,6 @@
 -(void) setModuleCode:(NSString *)code andUid:(NSString *)uid{
     moduleCode = code;
     matricNumber = uid;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivesNumOfAgreesAndDisagreesNotification:) name:NOTIF_NUM_AGREE_DISAGREE_RETRIEVED object:nil];
-   [serverUtil getNumOfAgreesAndDisagreesOfEvent:(NSString*)code];
-}
-- (void) receivesNumOfAgreesAndDisagreesNotification:(NSNotification *) notification{
-    
-    NSDictionary *userInfo = notification.userInfo;
-    NSLog(@"The event: %@ AgreeCount: %@ and DisagreeCount: %@", [userInfo objectForKey:@"eventID"], [userInfo objectForKey:@"agreeCount"], [userInfo objectForKey:@"disagreeCount"]);
-    
 }
 
 @end

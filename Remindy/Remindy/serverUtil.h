@@ -19,14 +19,14 @@ typedef enum {
 @interface serverUtil : NSObject
 
 // User creates a new event:
-+ (void)             user:(NSString *) matricNumber addEvent:(EventModel*) event;
++ (void) user:(NSString *)matricNumber addEvent:(EventModel*)event;
 
 // User clicked "Agree" or "Disagree" button:
-+ (void) user:(NSString *) matricNumber agrees: (BOOL) isAgreed EventWithID:(NSString*) eventID;
++ (void) user:(NSString *)matricNumber agrees: (BOOL)isAgreed EventWithID:(NSString*)eventID;
 
 // Has the user typed "Agree" or "Disagree" button before?
 // The return is YES or NO
-+ (void) user:(NSString *) matricNumber isAgreeWithEventWithID:(NSString *)eventID;
++ (void) user:(NSString *)matricNumber isAgreeWithEventWithID:(NSString *)eventID;
 
 + (void) retrieveAllEventsOfModule:(NSString *) moduleCode;
 

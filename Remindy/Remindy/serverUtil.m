@@ -121,11 +121,27 @@
             
             NSMutableArray *eventList = [[NSMutableArray alloc]init];
             for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
                 EventModel *newEvent = [[EventModel alloc] initWithModuleCode:moduleCode
                                                                 andEventTitle:[object objectForKey:@"eventTitle"]
                                                                andDescription:[object objectForKey:@"description"]
                                                                   andDeadline:[object objectForKey:@"deadline"]];
+                newEvent.eventID = object.objectId;
+                
+                // Get Number of agrees:
+                PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
+                [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:YES]];
+                [query whereKey:@"eventID" equalTo:newEvent.eventID];
+                
+                int count = [query countObjects];
+                newEvent.numOfAgrees = count;
+                
+                query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
+                [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:NO]];
+                [query whereKey:@"eventID" equalTo:newEvent.eventID];
+                
+                count = [query countObjects];
+                newEvent.numOfDisagrees = count;
+                
                 [eventList addObject:newEvent];
             }
             
@@ -139,6 +155,7 @@
         }
     }];
 }
+
 
 + (void) getNumOfAgreesAndDisagreesOfEvent: (NSString *) eventID{
     
