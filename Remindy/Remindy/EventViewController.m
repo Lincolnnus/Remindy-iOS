@@ -61,6 +61,8 @@
     [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Singapore"]];
     cell.deadline.text = [formatter stringFromDate:event.deadline];
     cell.moduleCode.text = event.moduleCode;
+    
+    NSLog(@"Agreeee: %d", event.numOfAgrees);
     cell.agreeNumLabel.text = [NSString stringWithFormat:@"%d", event.numOfAgrees];
     cell.disagreeNumLabel.text = [NSString stringWithFormat:@"%d", event.numOfDisagrees];
     
