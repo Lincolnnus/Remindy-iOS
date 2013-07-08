@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4910CEE817887799001633B0 /* serverUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 49AC3A2D17885C5600680735 /* serverUtil.m */; };
+		4995A766178A4CAB000488A6 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4995A765178A4CAA000488A6 /* constants.m */; };
 		49AC3A19178859E100680735 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A18178859E100680735 /* Parse.framework */; };
 		49AC3A1B17885AC800680735 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A1A17885AC800680735 /* AudioToolbox.framework */; };
 		49AC3A1D17885AD100680735 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A1C17885AD100680735 /* CFNetwork.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4995A764178A4CAA000488A6 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		4995A765178A4CAA000488A6 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
 		49AC3A18178859E100680735 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		49AC3A1A17885AC800680735 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		49AC3A1C17885AD100680735 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -144,11 +147,13 @@
 				CF8AA8421776E27800688642 /* ViewController.m */,
 				CF06967D1788764100C3F498 /* ModuleViewController.h */,
 				CF06967E1788764100C3F498 /* ModuleViewController.m */,
-				CF8AA82D1776E27800688642 /* Supporting Files */,
 				CF2E448C177768C4006B0F57 /* EventModel.h */,
 				CF2E448D177768C4006B0F57 /* EventModel.m */,
 				49AC3A2C17885C5600680735 /* serverUtil.h */,
 				49AC3A2D17885C5600680735 /* serverUtil.m */,
+				4995A764178A4CAA000488A6 /* constants.h */,
+				4995A765178A4CAA000488A6 /* constants.m */,
+				CF8AA82D1776E27800688642 /* Supporting Files */,
 			);
 			path = Remindy;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				CF2E448E177768C5006B0F57 /* EventModel.m in Sources */,
 				CF0696801788764100C3F498 /* ModuleViewController.m in Sources */,
 				CFF42D7B178975250030A71A /* EventViewController.m in Sources */,
+				4995A766178A4CAB000488A6 /* constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

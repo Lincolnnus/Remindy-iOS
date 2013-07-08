@@ -43,13 +43,8 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"View 333333");
-
     [super viewDidLoad];
-    
-    NSLog(@"View 222222");
-
-    
+        
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

@@ -7,10 +7,7 @@
 //
 
 #import "serverUtil.h"
-
-#define NOTIF_AGREE_OR_DISAGREE @"NOTIF_AGREE_OR_DISAGREE"
-#define NOTIF_EVENT_OF_MODULE_RETRIEVED @"NOTIF_EVENT_OF_MODULE_RETRIEVED"
-#define NOTIF_NUM_AGREE_DISAGREE_RETRIEVED @"NOTIF_NUM_AGREE_DISAGREE_RETRIEVED"
+#import "constants.h"
 
 @implementation serverUtil
 
@@ -43,6 +40,7 @@
 // The return is YES or NO
 
 /* The way to do it Register for the notification center:
+ 
  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivesAgreementNotification:) name:NOTIF_AGREE_OR_DISAGREE object:nil];
  
  - (void) receivesAgreementNotification:(NSNotification *) notification
@@ -144,12 +142,13 @@
 
 + (void) getNumOfAgreesAndDisagreesOfEvent: (NSString *) eventID{
     
-    PFQuery *query = [PFQuery queryWithClassName:@"event"];
+    PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
     [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:YES]];
+    [query whereKey:@"eventID" equalTo:eventID];
     [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
         if (!error) {
             // The count request succeeded. Log the count
-            NSLog(@"The event of ID %@ has %d agrees", eventID, count);
+            NSLog(@"In server Util: The event of ID %@ has %d agrees", eventID, count);
             
             // Create a dictionary to be passed around:
             NSArray *values = [[NSArray alloc] initWithObjects: eventID, [NSNumber numberWithInt:count], nil];
@@ -166,12 +165,14 @@
 
 // Helper function.
 + (void) addNumOfDisagreesOfEvent: (NSString *) eventID toDictionary: (NSMutableDictionary *) userInfo{
-    PFQuery *query = [PFQuery queryWithClassName:@"event"];
+    PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
     [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:NO]];
+    [query whereKey:@"eventID" equalTo:eventID];
+
     [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
         if (!error) {
             // The count request succeeded. Log the count
-            NSLog(@"The event of ID %@ has %d disagrees", eventID, count);
+            NSLog(@"In server util: The event of ID %@ has %d disagrees", eventID, count);
             
             [userInfo setObject: [NSNumber numberWithInt: count] forKey:@"disagreeCount"];
             

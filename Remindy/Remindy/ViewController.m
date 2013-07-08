@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ModuleViewController.h"
+#import "constants.h"
 //#import "AFJSONRequestOperation.h"
 
 @interface ViewController ()
@@ -165,7 +166,7 @@
     // User creates a new event:
     
     //[serverUtil user: @"a0091726" addEvent:[[EventModel alloc] initWithModuleCode:@"iCMC2013" andEventTitle:@"Assignment 1" andDescription:@"Hand written" andDeadline:[NSDate date]]];
-    [serverUtil user: @"a0091730" addEvent:[[EventModel alloc] initWithModuleCode:@"iCMC2013" andEventTitle:@"Assignment 2" andDescription:@"Submit to the office" andDeadline:[NSDate date]]];
+    //[serverUtil user: @"a0091730" addEvent:[[EventModel alloc] initWithModuleCode:@"iCMC2013" andEventTitle:@"Assignment 2" andDescription:@"Submit to the office" andDeadline:[NSDate date]]];
     
     // User clicked "Agree" or "Disagree" button:
     
@@ -179,10 +180,35 @@
     
     // Has the user typed "Agree" or "Disagree" button before?
     // The return is YES or NO
-//    BOOL user:(NSString *) matricNumber isAgreeWithEventWithID:(NSString *)eventID;
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivesAgreementNotification:) name:NOTIF_AGREE_OR_DISAGREE object:nil];
+//    [serverUtil user:@"a0091726" isAgreeWithEventWithID:@"lVqcQoucLf"];
 //    
-//    + (void) retrieveAllEventsOfModule:(NSString *) moduleCode;
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retrievesEventNotification:) name:NOTIF_EVENT_OF_MODULE_RETRIEVED object:nil];
+//    [serverUtil retrieveAllEventsOfModule:(NSString *) @"iCMC2013"];
 //    
-//    + (void) getNumOfAgreesAndDisagreesOfEvent: (NSString *) eventID;
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivesNumOfAgreesAndDisagreesNotification:) name:NOTIF_NUM_AGREE_DISAGREE_RETRIEVED object:nil];
+//    [serverUtil getNumOfAgreesAndDisagreesOfEvent: (NSString *) @"lVqcQoucLf"];
+}
+
+- (void) receivesAgreementNotification:(NSNotification *) notification{
+
+    NSDictionary *userInfo = notification.userInfo;
+    NSLog(@"User: %@ Agrees: %@ with event: %@", [userInfo objectForKey:@"matricNumber"], [userInfo objectForKey:@"isAgreed"], [userInfo objectForKey:@"eventID"]);
+}
+
+- (void) retrievesEventNotification:(NSNotification *) notification{
+    
+    NSDictionary *userInfo = notification.userInfo;
+    NSArray *eventList = [userInfo objectForKey: @"eventList"];
+    for (EventModel *event in eventList) {
+        NSLog(@"Module: %@ Event title: %@ description: %@ with deadline: %@", event.moduleCode, event.eventTitle, event.description, event.deadline);
+    }
+}
+
+- (void) receivesNumOfAgreesAndDisagreesNotification:(NSNotification *) notification{
+    
+    NSDictionary *userInfo = notification.userInfo;
+    NSLog(@"The event: %@ AgreeCount: %@ and DisagreeCount: %@", [userInfo objectForKey:@"eventID"], [userInfo objectForKey:@"agreeCount"], [userInfo objectForKey:@"disagreeCount"]);
 }
 @end
