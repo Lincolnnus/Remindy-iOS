@@ -128,6 +128,7 @@
     if ([segue.identifier isEqualToString:@"showModuleView"]) {
         ModuleViewController *destViewController = segue.destinationViewController;
         destViewController.modules =[myCache objectForKey:@"modules"];
+        destViewController.uid = [myCache objectForKey:@"uid"];
     }
 }
 

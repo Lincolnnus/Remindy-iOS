@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EventViewController.h"
 
 @interface ModuleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *moduleTableView;
 @property (nonatomic) NSArray *modules;
+@property (nonatomic) NSString *uid;
 @property (nonatomic) NSDictionary *selectedModule;
+@property (nonatomic) NSMutableArray *eventList;
+@property (nonatomic) EventViewController * destViewController;
 @end
