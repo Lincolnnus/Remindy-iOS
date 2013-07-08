@@ -106,10 +106,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setEventList:(NSMutableArray *)eList{
-    eventList = eList;
-    [eventTable reloadData];
-}
 -(void) setModuleCode:(NSString *)code andUid:(NSString *)uid{
     moduleCode = code;
     matricNumber = uid;
@@ -124,6 +120,18 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retrievesEventNotification:) name:NOTIF_EVENT_OF_MODULE_RETRIEVED object:nil];
+    [serverUtil retrieveAllEventsOfModule:moduleCode withViewer:matricNumber];
+}
+- (void) retrievesEventNotification:(NSNotification *) notification{
+    NSLog(@"notification receieved!!!");
+    
+    NSDictionary *userInfo = notification.userInfo;
+    
+    eventList = [userInfo objectForKey: @"eventList"];
+    for (EventModel *event in eventList) {
+        NSLog(@"Module: %@ Event title: %@ description: %@ with deadline: %@", event.moduleCode, event.eventTitle, event.description, event.deadline);
+    }
     [eventTable reloadData];
 }
 

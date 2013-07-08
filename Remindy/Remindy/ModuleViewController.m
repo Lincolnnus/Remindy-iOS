@@ -55,9 +55,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     selectedModule =[modules objectAtIndex:[indexPath row]];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retrievesEventNotification:) name:NOTIF_EVENT_OF_MODULE_RETRIEVED object:nil];
     
-    [serverUtil retrieveAllEventsOfModule:(NSString *)[selectedModule objectForKey:@"CourseCode"] withViewer:uid];
+    [self performSegueWithIdentifier:@"showEventView" sender:self];
+
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -77,22 +77,8 @@
     if ([segue.identifier isEqualToString:@"showEventView"]) {
         destViewController = [[EventViewController alloc] init];
         destViewController = segue.destinationViewController;
-        [destViewController setEventList:eventList];
         [destViewController setModuleCode:[selectedModule objectForKey:@"CourseCode" ] andUid:uid];
     }
-}
-
-- (void) retrievesEventNotification:(NSNotification *) notification{
-    NSLog(@"notification receieved!!!");
-    
-    NSDictionary *userInfo = notification.userInfo;
-    
-    eventList = [userInfo objectForKey: @"eventList"];
-    for (EventModel *event in eventList) {
-        NSLog(@"Module: %@ Event title: %@ description: %@ with deadline: %@", event.moduleCode, event.eventTitle, event.description, event.deadline);
-    }
-    
-    [self performSegueWithIdentifier:@"showEventView" sender:self];
 }
 
 @end
