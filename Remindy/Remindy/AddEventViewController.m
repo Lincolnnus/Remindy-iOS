@@ -28,12 +28,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view endEditing:YES];
 	// Do any additional setup after loading the view.
 }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
 - (IBAction)addNewEvent:(id)sender {
+    if((eventTitle.text.length >0)&&(description.text.length>0))
+    {
     event = [[EventModel alloc] initWithModuleCode:moduleCode andEventTitle:eventTitle.text andDescription:description.text andDeadline:myDateTime.date];
     [serverUtil user:uid addEvent:event];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Successful!"                      message:@"New Event Create Successful"                      delegate:self               cancelButtonTitle:@"Cancel"otherButtonTitles:@"OK",nil];
+        [alert show];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error Creating Events!"                        message:@"Please check the title and description" delegate:self
+cancelButtonTitle:@"Cancel"otherButtonTitles:@"OK",nil];
+        [alert show];
+
+    }
     
 }
 
