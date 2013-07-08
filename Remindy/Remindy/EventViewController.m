@@ -10,6 +10,7 @@
 #import "EventTableCell.h"
 #import "serverUtil.h"
 #import "constants.h"
+#import "AddEventViewController.h"
 
 @interface EventViewController ()
 @end
@@ -112,6 +113,14 @@
 -(void) setModuleCode:(NSString *)code andUid:(NSString *)uid{
     moduleCode = code;
     matricNumber = uid;
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"AddEventView"]) {
+        AddEventViewController* destViewController = [[AddEventViewController alloc] init];
+        destViewController = segue.destinationViewController;
+        destViewController.uid = matricNumber;
+        destViewController.moduleCode =moduleCode;
+    }
 }
 
 @end
