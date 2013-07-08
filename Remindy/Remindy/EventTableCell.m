@@ -9,7 +9,7 @@
 #import "EventTableCell.h"
 
 @implementation EventTableCell
-@synthesize eventTitle,deadline,description,moduleCode;
+@synthesize eventTitle,deadline,description,moduleCode,numDislike,numLike;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

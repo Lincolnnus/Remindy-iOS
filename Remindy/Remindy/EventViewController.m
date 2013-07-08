@@ -45,13 +45,13 @@
 {
     static NSString *CellIdentifier = @"EventTableCell";
     EventModel *event = [eventList objectAtIndex:[indexPath row]];
-    NSLog(@"Event%@",event);
     
     EventTableCell *cell = (EventTableCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"EventTableCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
+    
     // Configure the cell
     cell.eventTitle.text = event.eventTitle;
     cell.description.text = event.description;
@@ -72,6 +72,8 @@
 	// Do any additional setup after loading the view.
     eventTable.delegate = self;
     eventTable.dataSource =self;
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backBarButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,6 +89,14 @@
 -(void) setModuleCode:(NSString *)code andUid:(NSString *)uid{
     moduleCode = code;
     matricNumber = uid;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivesNumOfAgreesAndDisagreesNotification:) name:NOTIF_NUM_AGREE_DISAGREE_RETRIEVED object:nil];
+   [serverUtil getNumOfAgreesAndDisagreesOfEvent:(NSString*)code];
+}
+- (void) receivesNumOfAgreesAndDisagreesNotification:(NSNotification *) notification{
+    
+    NSDictionary *userInfo = notification.userInfo;
+    NSLog(@"The event: %@ AgreeCount: %@ and DisagreeCount: %@", [userInfo objectForKey:@"eventID"], [userInfo objectForKey:@"agreeCount"], [userInfo objectForKey:@"disagreeCount"]);
+    
 }
 
 @end

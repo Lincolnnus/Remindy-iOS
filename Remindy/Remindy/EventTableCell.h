@@ -13,5 +13,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *deadline;
 @property (strong, nonatomic) IBOutlet UILabel *moduleCode;
 @property (strong, nonatomic) IBOutlet UILabel *description;
+@property (strong, nonatomic) IBOutlet UILabel *numLike;
+@property (strong, nonatomic) IBOutlet UILabel *numDislike;
 
 @end

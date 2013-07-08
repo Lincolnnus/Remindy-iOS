@@ -78,6 +78,7 @@
         destViewController = [[EventViewController alloc] init];
         destViewController = segue.destinationViewController;
         [destViewController setEventList:eventList];
+        [destViewController setModuleCode:[selectedModule objectForKey:@"CourseCode" ] andUid:uid];
     }
 }
 
