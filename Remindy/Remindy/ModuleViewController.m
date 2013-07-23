@@ -97,7 +97,7 @@
     if ([segue.identifier isEqualToString:@"showEventView"]) {
         destViewController = [[EventViewController alloc] init];
         destViewController = segue.destinationViewController;
-        [destViewController setModuleCode:[selectedModule objectForKey:@"CourseCode" ] andUid:uid];
+        [[dataUtil sharedInstance]setModuleCode: [selectedModule objectForKey:@"CourseCode" ]];
     }
 }
 - (void)checkForModules{

@@ -283,10 +283,6 @@
 				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="8735305"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC44ODgxMDI5NTU5IDEgMC42NDE0NzUxMTkgMC42AA</bytes>
-				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<reference key="IBUIContentView" ref="8735305"/>
 				<string key="IBUIReuseIdentifier">EventTableCell</string>
@@ -672,7 +668,7 @@
 						<int key="objectID">10</int>
 						<reference key="object" ref="111426603"/>
 						<array class="NSMutableArray" key="children">
-							<object class="IBNSLayoutConstraint" id="622527422">
+							<object class="IBNSLayoutConstraint" id="752891122">
 								<reference key="firstItem" ref="111426603"/>
 								<int key="firstAttribute">8</int>
 								<int key="relation">0</int>
@@ -986,7 +982,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">259</int>
-						<reference key="object" ref="622527422"/>
+						<reference key="object" ref="752891122"/>
 						<reference key="parent" ref="111426603"/>
 					</object>
 				</array>
@@ -998,7 +994,7 @@
 				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<array key="10.IBViewMetadataConstraints">
 					<reference ref="523552517"/>
-					<reference ref="622527422"/>
+					<reference ref="752891122"/>
 				</array>
 				<boolean value="NO" key="10.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="100.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

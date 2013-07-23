@@ -14,6 +14,4 @@
 @property (nonatomic) NSArray *eventList;
 @property (strong, nonatomic) IBOutlet UITableView *eventTable;
 
--(void) setModuleCode:(NSString *)code andUid:(NSString*)uid;
-
 @end

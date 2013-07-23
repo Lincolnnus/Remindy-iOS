@@ -11,6 +11,7 @@
 #import "serverUtil.h"
 #import "constants.h"
 #import "AddEventViewController.h"
+#import "dataUtil.h"
 
 @interface EventViewController ()
 @end
@@ -72,7 +73,11 @@
     
     cell.viewerMatricNumber = matricNumber;
     cell.eventID = event.eventID;
-    
+    if ([event.deadline compare:[NSDate date]]==NSOrderedAscending){
+        cell.hidden = YES;
+    }else{
+        cell.deadline.textColor = [UIColor blueColor];
+    }
     if (event.isCurrentViewerAgrees == kAGREED){
                 
         cell.agreed = YES;
@@ -99,6 +104,8 @@
 	// Do any additional setup after loading the view.
     eventTable.delegate = self;
     eventTable.dataSource =self;
+    moduleCode = [[dataUtil sharedInstance] moduleCode];
+    matricNumber = [[dataUtil sharedInstance]uid];
     UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     self.navigationItem.backBarButtonItem = backBarButton;
     [SVProgressHUD show];
@@ -127,10 +134,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) setModuleCode:(NSString *)code andUid:(NSString *)uid{
-    moduleCode = code;
-    matricNumber = uid;
-}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"AddEventView"]) {
         AddEventViewController* destViewController = [[AddEventViewController alloc] init];
@@ -141,6 +144,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.view setNeedsDisplay];
 }
 
 
