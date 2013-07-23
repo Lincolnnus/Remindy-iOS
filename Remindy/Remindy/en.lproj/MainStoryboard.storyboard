@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Login-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
@@ -12,46 +12,247 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nfF-eX-HqA">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="314" id="Um9-Kb-sGZ"/>
-                                </constraints>
-                            </tableView>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7W-66-iY0">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="234" id="fOf-E9-0Gy"/>
+                                    <constraint firstAttribute="height" constant="158" id="bVs-fX-aSt"/>
                                 </constraints>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nfF-eX-HqA" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="4Xp-d5-AFl"/>
-                            <constraint firstItem="nfF-eX-HqA" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="6Rk-lt-nFQ"/>
-                            <constraint firstItem="q7W-66-iY0" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="I8s-rQ-L9S"/>
-                            <constraint firstItem="q7W-66-iY0" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="VVB-IO-l86"/>
-                            <constraint firstItem="nfF-eX-HqA" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="W30-ks-WhV"/>
-                            <constraint firstItem="q7W-66-iY0" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="rUt-6M-khi"/>
+                            <constraint firstItem="q7W-66-iY0" firstAttribute="top" secondItem="3" secondAttribute="top" constant="48" id="9fv-CL-V35"/>
+                            <constraint firstItem="q7W-66-iY0" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="Wm8-y6-gVX"/>
+                            <constraint firstItem="q7W-66-iY0" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="awy-Uv-PtQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Login" id="D5Q-KV-Pv1"/>
                     <connections>
-                        <outlet property="eventTableView" destination="nfF-eX-HqA" id="Vg7-PR-qHY"/>
                         <outlet property="loginView" destination="q7W-66-iY0" id="9Rk-WC-dLi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-265" y="52"/>
+        </scene>
+        <!--Module View Controller - All Modules-->
+        <scene sceneID="PwQ-hS-k3Q">
+            <objects>
+                <viewController storyboardIdentifier="" id="km4-TF-mMG" customClass="ModuleViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BTO-Ud-UMo">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kCo-QB-Hjm">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="bottom" secondItem="BTO-Ud-UMo" secondAttribute="bottom" type="default" id="1iU-4V-OIr"/>
+                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="trailing" secondItem="BTO-Ud-UMo" secondAttribute="trailing" type="default" id="jd0-Wv-tMm"/>
+                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="top" secondItem="BTO-Ud-UMo" secondAttribute="top" type="default" id="vde-r4-w6V"/>
+                            <constraint firstItem="kCo-QB-Hjm" firstAttribute="leading" secondItem="BTO-Ud-UMo" secondAttribute="leading" type="default" id="xmh-Ff-Ydk"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="All Modules" id="91a-bt-OAu"/>
+                    <connections>
+                        <outlet property="moduleTableView" destination="kCo-QB-Hjm" id="Qsg-ha-DJa"/>
+                        <segue destination="wat-OK-NSy" kind="push" identifier="showEventView" customClass="showEventView" id="pTM-6h-emh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1XT-te-SAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="66"/>
+        </scene>
+        <!--Event View Controller - All Events-->
+        <scene sceneID="jC4-SB-Ij0">
+            <objects>
+                <viewController id="wat-OK-NSy" customClass="EventViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oGh-DR-uVU">
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="TCN-f9-NHg">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="trailing" secondItem="oGh-DR-uVU" secondAttribute="trailing" type="default" id="9nj-zb-1bD"/>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="bottom" secondItem="oGh-DR-uVU" secondAttribute="bottom" type="default" id="TQL-ZB-YQJ"/>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="leading" secondItem="oGh-DR-uVU" secondAttribute="leading" type="default" id="cqs-Kk-Nq9"/>
+                            <constraint firstItem="TCN-f9-NHg" firstAttribute="top" secondItem="oGh-DR-uVU" secondAttribute="top" type="default" id="kc6-G5-Ccf"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="All Events" id="dAi-gH-L8T">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GUp-4p-Qvu">
+                            <connections>
+                                <segue destination="5v8-p4-Osm" kind="push" identifier="AddEventView" id="pwo-V4-QZ6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="eventTable" destination="TCN-f9-NHg" id="9u9-f6-tAd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3l-y9-DfE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1299" y="66"/>
+        </scene>
+        <!--Add Event View Controller - Add New Event-->
+        <scene sceneID="Ac8-ga-t1h">
+            <objects>
+                <viewController id="5v8-p4-Osm" customClass="AddEventViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J8e-bh-8or">
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn4-iP-kMt">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LQ-Ia-hiL">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="deadline:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNP-Vy-zhg">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-wa-wtt">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="324" id="HsB-N0-E2H"/>
+                                    <constraint firstAttribute="height" constant="216" id="ahK-r8-zmu"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="394973428.797005">
+                                    <!--2013-07-08 10:50:28 +0000-->
+                                </date>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <data key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</data>
+                                </timeZone>
+                                <connections>
+                                    <action selector="changeDate:" destination="5v8-p4-Osm" eventType="valueChanged" id="5cv-85-sI8"/>
+                                </connections>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tNd-Jh-xM9">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qhh-Cm-lut">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Hde-vI-WWd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PNP-Vy-zhg" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="137" id="1Tm-Ff-xKR"/>
+                            <constraint firstItem="uDU-wa-wtt" firstAttribute="centerX" secondItem="J8e-bh-8or" secondAttribute="centerX" type="default" id="2dF-r6-mIF"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="leading" secondItem="PNP-Vy-zhg" secondAttribute="leading" type="default" id="3Jb-Wh-z66"/>
+                            <constraint firstItem="PNP-Vy-zhg" firstAttribute="centerX" secondItem="Wn4-iP-kMt" secondAttribute="centerX" type="default" id="GdF-Vm-SUc"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="4" id="LPD-JT-ulP"/>
+                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="trailing" secondItem="Qhh-Cm-lut" secondAttribute="trailing" type="default" id="Lxu-HT-cyE"/>
+                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="leading" secondItem="Qhh-Cm-lut" secondAttribute="leading" type="default" id="Prp-YD-m46"/>
+                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="top" secondItem="Wn4-iP-kMt" secondAttribute="top" type="default" id="QpK-c3-Uf8"/>
+                            <constraint firstItem="Qhh-Cm-lut" firstAttribute="leading" secondItem="J8e-bh-8or" secondAttribute="leading" constant="114" id="VHE-tB-OA1"/>
+                            <constraint firstItem="0LQ-Ia-hiL" firstAttribute="baseline" secondItem="tNd-Jh-xM9" secondAttribute="baseline" type="default" id="b0P-3Q-pjJ"/>
+                            <constraint firstItem="tNd-Jh-xM9" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="87" id="j7e-fg-f39"/>
+                            <constraint firstItem="Wn4-iP-kMt" firstAttribute="top" secondItem="J8e-bh-8or" secondAttribute="top" constant="37" id="noH-eq-iOO"/>
+                            <constraint firstItem="uDU-wa-wtt" firstAttribute="top" secondItem="PNP-Vy-zhg" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="zy7-EI-fz3"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Add New Event" id="xwD-Qy-KFN">
+                        <barButtonItem key="rightBarButtonItem" title="Confirm" id="uDI-So-CDJ">
+                            <connections>
+                                <action selector="addNewEvent:" destination="5v8-p4-Osm" id="bSn-Wx-Xbl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="description" destination="Qhh-Cm-lut" id="eiR-Ze-vzU"/>
+                        <outlet property="eventTitle" destination="tNd-Jh-xM9" id="81X-q9-jdK"/>
+                        <outlet property="myDateTime" destination="uDU-wa-wtt" id="z1C-XY-vUZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dpH-9i-wdT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1759" y="76"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cfD-ZS-FnR">
+            <objects>
+                <navigationController storyboardIdentifier="showModules" id="j3G-pD-01T" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rWg-jL-UWM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="km4-TF-mMG" kind="relationship" relationship="rootViewController" id="xg5-b1-OPJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xch-Xu-zoF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="260" y="66"/>
         </scene>
     </scenes>
     <classes>
+        <class className="AddEventViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addNewEvent:"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="eventTitle" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="myDateTime" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="EventViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EventViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="eventTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ModuleViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ModuleViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="moduleTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="eventTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="loginView" candidateClass="UIWebView"/>
             </relationships>
         </class>

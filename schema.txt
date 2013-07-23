@@ -1,0 +1,6 @@
+event:
+objectID moduleCode deadline eventTitle description
+
+
+agreeAndDisagree:
+matricNumber isAgreed eventID

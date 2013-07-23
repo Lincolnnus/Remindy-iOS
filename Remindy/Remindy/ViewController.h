@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "EventModel.h"
+#import "serverUtil.h"
 
-@interface ViewController : UIViewController<UITableViewDelegate, UITableViewDataSource,UIWebViewDelegate>
+@interface ViewController : UIViewController<UIWebViewDelegate,NSURLConnectionDelegate>
+
+@property (nonatomic) NSCache *myCache;
+@property (nonatomic, strong) NSMutableData *moduleData;
+
 @property (strong, nonatomic) IBOutlet UIWebView *loginView;
 
-@property (strong, nonatomic) IBOutlet UITableView *eventTableView;
-@property (nonatomic) NSMutableArray *events;
-
 -(void)checkForAccessToken:(NSString *)urlString;
+-(void)getUid;
+-(void)getModules;
+
 @end

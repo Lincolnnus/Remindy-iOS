@@ -9,5 +9,21 @@
 #import "EventModel.h"
 
 @implementation EventModel
+@synthesize moduleCode, eventTitle, description, deadline, eventID;
+
+-(id) initWithModuleCode: (NSString *) mc
+           andEventTitle: (NSString *) et
+          andDescription: (NSString *) desc
+             andDeadline: (NSDate *) dead{
+    
+    if (self = [super init]) {
+        moduleCode = mc;
+        eventTitle = et;
+        description = desc;
+        deadline = dead;
+    }
+    return self;
+}
+
 
 @end
