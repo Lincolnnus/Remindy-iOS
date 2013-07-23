@@ -18,7 +18,7 @@
 
 @implementation ModuleViewController
 
-@synthesize modules,moduleTableView,selectedModule,uid,destViewController,eventList;
+@synthesize modules,moduleTableView,selectedModule,uid,destViewController,eventList,token,moduleData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,7 +35,9 @@
     moduleTableView.dataSource = self;
     moduleTableView.delegate = self;
     uid = [[dataUtil sharedInstance] uid];
-    modules =[[dataUtil sharedInstance]modules];
+    token = [[dataUtil sharedInstance]token];
+    modules = [[NSArray alloc]init];
+    [self checkForModules];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -82,6 +84,54 @@
         destViewController = segue.destinationViewController;
         [destViewController setModuleCode:[selectedModule objectForKey:@"CourseCode" ] andUid:uid];
     }
+}
+- (void)checkForModules{
+    NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
+    NSString *moduleUrlString = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=%@&AuthToken=%@&Duration=%d&IncludeAllInfo=%@", apikey, token,1000,@"true"];
+    NSURL *url = [NSURL URLWithString:moduleUrlString];
+    
+    moduleData = [NSMutableData data];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+    if (theConnection) {
+        // Create the NSMutableData to hold the received data.
+        // receivedData is an instance variable declared elsewhere.
+        NSLog(@"success");
+        //moduleData = [NSMutableData data];
+    } else {
+        // Inform the user that the connection failed.
+        NSLog(@"failed");
+    }
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"didReceiveResponse");
+    [moduleData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"receivedData");
+    [moduleData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError");
+    NSLog(@"Connection failed: %@", [error description]);
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    NSLog(@"connectionDidFinishLoading");
+    
+    // convert to JSON
+    NSError *myError = nil;
+    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:moduleData options:NSJSONReadingMutableLeaves error:&myError];
+    
+    // extract specific value...
+    modules = [res objectForKey:@"Results"];
+    [[dataUtil sharedInstance] setModules:modules];
+    NSLog(@"here");
+    [moduleTableView reloadData];
+    
 }
 
 @end

@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "EventViewController.h"
 
-@interface ModuleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface ModuleViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,NSURLConnectionDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *moduleTableView;
 @property (nonatomic) NSArray *modules;
 @property (nonatomic) NSString *uid;
+@property (nonatomic) NSString *token;
 @property (nonatomic) NSDictionary *selectedModule;
 @property (nonatomic) NSMutableArray *eventList;
 @property (nonatomic) EventViewController * destViewController;
+@property (nonatomic, strong) NSMutableData *moduleData;
+-(void)checkForModules;
 @end

@@ -10,20 +10,17 @@
 #import "ModuleViewController.h"
 #import "constants.h"
 #import "dataUtil.h"
-//#import "AFJSONRequestOperation.h"
 
 @interface ViewController ()
 @end
 
 @implementation ViewController
 
-@synthesize loginView,myCache,moduleData;
+@synthesize loginView,token,uid;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    myCache = [[NSCache alloc] init]; 
-    NSLog(@"token %@",[myCache objectForKey:@"token"]);
     
 	NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
     
@@ -38,8 +35,6 @@
     
 	[loginView loadRequest:request];
     loginView.delegate = self;
-    
-    [self serverUtilTest];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
@@ -80,66 +75,48 @@
 			if ([success isEqualToString:@"0"]) {
 				NSURL *responseURL = [NSURL URLWithString:urlString];
                 
-				NSString *token = [NSString stringWithContentsOfURL:responseURL
+				token = [NSString stringWithContentsOfURL:responseURL
 														   encoding:NSASCIIStringEncoding
 															  error:&error];
 				//print out the token or save for next logon or to navigate to next API call.
                 [[dataUtil sharedInstance] setToken:token];
-				[myCache setObject:token forKey:@"token"];
-                [self getUid];
-                [self getModules];
+                [self checkForUid];
 			}
         }
 	}
     
 }
-- (void)getUid{
-    NSString *token=[myCache objectForKey:@"token"];
+- (void)checkForUid{
     NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
     NSString *useridUrlString = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/UserID_Get?APIKey=%@&Token=%@", apikey, token];
     NSURL *url = [NSURL URLWithString:useridUrlString];
-    NSLog(@"getting uid");
-    NSString *uid = [NSString stringWithContentsOfURL:url];
-    
-    NSMutableString *muid = [NSMutableString stringWithString:uid];
-    [muid replaceOccurrencesOfString:@"\"" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [muid length])];
-    
-    uid = [NSString stringWithString:muid];
-    
-    [[dataUtil sharedInstance]setUid:uid];
-}
-- (void)getModules{
-    NSString *token=[myCache objectForKey:@"token"];
-    NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
-    NSString *moduleUrlString = [NSString stringWithFormat:@"https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=%@&AuthToken=%@&Duration=%d&IncludeAllInfo=%@", apikey, token,1000,@"true"];
-    NSURL *url = [NSURL URLWithString:moduleUrlString];
-    
-    moduleData = [NSMutableData data];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (theConnection) {
         // Create the NSMutableData to hold the received data.
         // receivedData is an instance variable declared elsewhere.
-        moduleData = [NSMutableData data];
+        //moduleData = [NSMutableData data];
     } else {
         // Inform the user that the connection failed.
     }
-    
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidUnload {
+    [super viewDidUnload];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSLog(@"didReceiveResponse");
-    [moduleData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     NSLog(@"receivedData");
-    [moduleData appendData:data];
+    NSString* newStr = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    NSMutableString *muid = [NSMutableString stringWithString:newStr];
+    [muid replaceOccurrencesOfString:@"\"" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [muid length])];
+    
+    uid = [NSString stringWithString:muid];
+    
+    [[dataUtil sharedInstance]setUid:uid];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -150,69 +127,15 @@
     NSLog(@"connectionDidFinishLoading");
     
     // convert to JSON
-    NSError *myError = nil;
-    NSDictionary *res = [NSJSONSerialization JSONObjectWithData:moduleData options:NSJSONReadingMutableLeaves error:&myError];
-    
-    // extract specific value...
-    NSArray *results = [res objectForKey:@"Results"];
-    [[dataUtil sharedInstance] setModules:results];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     UINavigationController* navVC = [storyboard instantiateViewControllerWithIdentifier:@"showModules"];
     [self presentViewController:navVC animated:YES completion:^{
     }];
     
 }
-- (void)viewDidUnload {
-    [super viewDidUnload];
-}
-
-- (void)serverUtilTest{
-    // User creates a new event:
-    
-    //[serverUtil user: @"a0091726" addEvent:[[EventModel alloc] initWithModuleCode:@"iCMC2013" andEventTitle:@"Assignment 1" andDescription:@"Hand written" andDeadline:[NSDate date]]];
-    //[serverUtil user: @"a0091730" addEvent:[[EventModel alloc] initWithModuleCode:@"iCMC2013" andEventTitle:@"Assignment 2" andDescription:@"Submit to the office" andDeadline:[NSDate date]]];
-    
-    // User clicked "Agree" or "Disagree" button:
-    
-    //[serverUtil user: @"a0091726" agrees: YES EventWithID:@"lVqcQoucLf"];
-    //[serverUtil user: @"a0091728" agrees: YES EventWithID:@"lVqcQoucLf"];
-    //[serverUtil user: @"a0091727" agrees: NO EventWithID:@"lVqcQoucLf"];
-    
-    //[serverUtil user: @"a0091729" agrees: NO EventWithID:@"Qq3WJacMNP"];
-    //[serverUtil user: @"a0091730" agrees: YES EventWithID:@"Qq3WJacMNP"];
-
-    
-    // Has the user typed "Agree" or "Disagree" button before?
-    // The return is YES or NO
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivesAgreementNotification:) name:NOTIF_AGREE_OR_DISAGREE object:nil];
-//    [serverUtil user:@"a0091726" isAgreeWithEventWithID:@"lVqcQoucLf"];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retrievesEventNotification:) name:NOTIF_EVENT_OF_MODULE_RETRIEVED object:nil];
-//    [serverUtil retrieveAllEventsOfModule:(NSString *) @"iCMC2013"];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivesNumOfAgreesAndDisagreesNotification:) name:NOTIF_NUM_AGREE_DISAGREE_RETRIEVED object:nil];
-//    [serverUtil getNumOfAgreesAndDisagreesOfEvent: (NSString *) @"lVqcQoucLf"];
-}
-
-- (void) receivesAgreementNotification:(NSNotification *) notification{
-
-    NSDictionary *userInfo = notification.userInfo;
-    NSLog(@"User: %@ Agrees: %@ with event: %@", [userInfo objectForKey:@"matricNumber"], [userInfo objectForKey:@"isAgreed"], [userInfo objectForKey:@"eventID"]);
-}
-
-- (void) retrievesEventNotification:(NSNotification *) notification{
-    
-    NSDictionary *userInfo = notification.userInfo;
-    NSArray *eventList = [userInfo objectForKey: @"eventList"];
-    for (EventModel *event in eventList) {
-        NSLog(@"Module: %@ Event title: %@ description: %@ with deadline: %@", event.moduleCode, event.eventTitle, event.description, event.deadline);
-    }
-}
-
-- (void) receivesNumOfAgreesAndDisagreesNotification:(NSNotification *) notification{
-    
-    NSDictionary *userInfo = notification.userInfo;
-    NSLog(@"The event: %@ AgreeCount: %@ and DisagreeCount: %@", [userInfo objectForKey:@"eventID"], [userInfo objectForKey:@"agreeCount"], [userInfo objectForKey:@"disagreeCount"]);
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 @end

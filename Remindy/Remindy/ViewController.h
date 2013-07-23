@@ -12,13 +12,12 @@
 
 @interface ViewController : UIViewController<UIWebViewDelegate,NSURLConnectionDelegate>
 
-@property (nonatomic) NSCache *myCache;
-@property (nonatomic, strong) NSMutableData *moduleData;
+@property (nonatomic) NSString *token;
+@property (nonatomic) NSString *uid;
 
 @property (strong, nonatomic) IBOutlet UIWebView *loginView;
 
 -(void)checkForAccessToken:(NSString *)urlString;
--(void)getUid;
--(void)getModules;
+-(void)checkForUid;
 
 @end
