@@ -10,6 +10,7 @@
 #import "EventViewController.h"
 #import "constants.h"
 #import "serverUtil.h"
+#import "dataUtil.h"
 
 @interface ModuleViewController ()
 
@@ -33,6 +34,8 @@
     [super viewDidLoad];
     moduleTableView.dataSource = self;
     moduleTableView.delegate = self;
+    uid = [[dataUtil sharedInstance] uid];
+    modules =[[dataUtil sharedInstance]modules];
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="j3G-pD-01T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7W-66-iY0">
@@ -29,17 +29,16 @@
                     <navigationItem key="navigationItem" title="Login" id="D5Q-KV-Pv1"/>
                     <connections>
                         <outlet property="loginView" destination="q7W-66-iY0" id="9Rk-WC-dLi"/>
-                        <segue destination="km4-TF-mMG" kind="push" identifier="showModuleView" id="QIr-FH-6hs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="250" y="58"/>
+            <point key="canvasLocation" x="-265" y="52"/>
         </scene>
         <!--Module View Controller - All Modules-->
         <scene sceneID="PwQ-hS-k3Q">
             <objects>
-                <viewController id="km4-TF-mMG" customClass="ModuleViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="" id="km4-TF-mMG" customClass="ModuleViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BTO-Ud-UMo">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -210,7 +209,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <!--Navigation Controller-->
         <scene sceneID="cfD-ZS-FnR">
             <objects>
-                <navigationController id="j3G-pD-01T" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="showModules" id="j3G-pD-01T" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rWg-jL-UWM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -218,12 +217,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="n6E-i3-XUn"/>
+                        <segue destination="km4-TF-mMG" kind="relationship" relationship="rootViewController" id="xg5-b1-OPJ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xch-Xu-zoF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-276" y="58"/>
+            <point key="canvasLocation" x="260" y="66"/>
         </scene>
     </scenes>
     <classes>

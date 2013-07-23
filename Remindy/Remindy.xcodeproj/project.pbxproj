@@ -20,6 +20,7 @@
 		49AC3A2917885B2F00680735 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A2817885B2F00680735 /* SystemConfiguration.framework */; };
 		49AC3A2B17885B6200680735 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A2A17885B6200680735 /* CoreLocation.framework */; };
 		CF0696801788764100C3F498 /* ModuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF06967E1788764100C3F498 /* ModuleViewController.m */; };
+		CF2AE69C179E2816000E3541 /* dataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AE69B179E2816000E3541 /* dataUtil.m */; };
 		CF2E448E177768C5006B0F57 /* EventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2E448D177768C4006B0F57 /* EventModel.m */; };
 		CF8AA8271776E27800688642 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8AA8261776E27800688642 /* UIKit.framework */; };
 		CF8AA8291776E27800688642 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF8AA8281776E27800688642 /* Foundation.framework */; };
@@ -59,6 +60,8 @@
 		49AC3A2D17885C5600680735 /* serverUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serverUtil.m; sourceTree = "<group>"; };
 		CF06967D1788764100C3F498 /* ModuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleViewController.h; sourceTree = "<group>"; };
 		CF06967E1788764100C3F498 /* ModuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleViewController.m; sourceTree = "<group>"; };
+		CF2AE69A179E2816000E3541 /* dataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dataUtil.h; sourceTree = "<group>"; };
+		CF2AE69B179E2816000E3541 /* dataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dataUtil.m; sourceTree = "<group>"; };
 		CF2E448C177768C4006B0F57 /* EventModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModel.h; sourceTree = "<group>"; };
 		CF2E448D177768C4006B0F57 /* EventModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModel.m; sourceTree = "<group>"; };
 		CF8AA8231776E27800688642 /* Remindy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remindy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +169,8 @@
 				CF2E448D177768C4006B0F57 /* EventModel.m */,
 				49AC3A2C17885C5600680735 /* serverUtil.h */,
 				49AC3A2D17885C5600680735 /* serverUtil.m */,
+				CF2AE69A179E2816000E3541 /* dataUtil.h */,
+				CF2AE69B179E2816000E3541 /* dataUtil.m */,
 				4995A764178A4CAA000488A6 /* constants.h */,
 				4995A765178A4CAA000488A6 /* constants.m */,
 				CF8AA82D1776E27800688642 /* Supporting Files */,
@@ -286,6 +291,7 @@
 				CFFA7CF0178A633900BCCCC2 /* EventTableCell.m in Sources */,
 				CFFA7CFB178A8D7800BCCCC2 /* EventViewController.m in Sources */,
 				CFFA7D06178B05D600BCCCC2 /* AddEventViewController.m in Sources */,
+				CF2AE69C179E2816000E3541 /* dataUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

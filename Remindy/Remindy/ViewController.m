@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ModuleViewController.h"
 #import "constants.h"
+#import "dataUtil.h"
 //#import "AFJSONRequestOperation.h"
 
 @interface ViewController ()
@@ -83,6 +84,7 @@
 														   encoding:NSASCIIStringEncoding
 															  error:&error];
 				//print out the token or save for next logon or to navigate to next API call.
+                [[dataUtil sharedInstance] setToken:token];
 				[myCache setObject:token forKey:@"token"];
                 [self getUid];
                 [self getModules];
@@ -104,8 +106,7 @@
     
     uid = [NSString stringWithString:muid];
     
-    [myCache setObject:uid forKey:@"uid"];
-    NSLog(@"uid%@",uid);
+    [[dataUtil sharedInstance]setUid:uid];
 }
 - (void)getModules{
     NSString *token=[myCache objectForKey:@"token"];
@@ -129,13 +130,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showModuleView"]) {
-        ModuleViewController *destViewController = segue.destinationViewController;
-        destViewController.modules =[myCache objectForKey:@"modules"];
-        destViewController.uid = [myCache objectForKey:@"uid"];
-    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -161,8 +155,11 @@
     
     // extract specific value...
     NSArray *results = [res objectForKey:@"Results"];
-    [myCache setObject:results forKey:@"modules"];
-    [self performSegueWithIdentifier:@"showModuleView" sender:self];
+    [[dataUtil sharedInstance] setModules:results];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UINavigationController* navVC = [storyboard instantiateViewControllerWithIdentifier:@"showModules"];
+    [self presentViewController:navVC animated:YES completion:^{
+    }];
     
 }
 - (void)viewDidUnload {
