@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EventModel.h"
-@interface AddEventViewController : UIViewController
+@interface AddEventViewController : UIViewController 
 @property (strong, nonatomic) IBOutlet UITextField *description;
 @property (strong, nonatomic) IBOutlet UITextField *eventTitle;
 @property (strong, nonatomic) IBOutlet UIDatePicker *myDateTime;

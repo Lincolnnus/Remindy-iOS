@@ -41,6 +41,11 @@
     NSLog(@"selected");
 }
 
+
+- (void)rankEvent {
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"EventTableCell";
@@ -56,8 +61,7 @@
     cell.description.text = event.description;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-mm-dd"];
-    
+    [formatter setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
     //Optionally for time zone converstions
     [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Singapore"]];
     cell.deadline.text = [formatter stringFromDate:event.deadline];
@@ -86,7 +90,6 @@
         cell.agreed = NO;
         cell.disagreed = NO;
     }
-    
     return cell;
 }
 
@@ -102,7 +105,7 @@
     [serverUtil retrieveAllEventsOfModule:moduleCode withViewer:matricNumber completeHandler:^(id data, NSError *error) {
         if (!error){
             [SVProgressHUD dismiss];
-            eventList = (NSArray*) data;
+             eventList = [((NSArray*) data)sortedArrayUsingSelector:@selector(compare:)];
             if ([eventList count] == 0) {
                 [SVProgressHUD showSuccessWithStatus:@"No event in this module"];
             }

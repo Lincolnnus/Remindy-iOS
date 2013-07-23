@@ -10,7 +10,7 @@
 #import "ModuleViewController.h"
 #import "constants.h"
 #import "dataUtil.h"
-
+#import "CacheManager.h"
 @interface ViewController ()
 @end
 
@@ -24,17 +24,30 @@
     
 	NSString *apikey = @"ziGsQQOz1ymvjT2ZRQzDp";
     
-	[loginView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
+    [loginView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"about:blank"]]];
     
-	NSString *redirectUrlString = @"http://ivle.nus.edu.sg/api/login/login_result.ashx";
-	NSString *authFormatString = @"https://ivle.nus.edu.sg/api/login/?apikey=%@";
+    NSString *redirectUrlString = @"http://ivle.nus.edu.sg/api/login/login_result.ashx";
+    NSString *authFormatString = @"https://ivle.nus.edu.sg/api/login/?apikey=%@";
     
     NSString *urlString = [NSString stringWithFormat:authFormatString, apikey, redirectUrlString];
-	NSURL *url = [NSURL URLWithString:urlString];
-	NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-	[loginView loadRequest:request];
+    [loginView loadRequest:request];
     loginView.delegate = self;
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([[dataUtil sharedInstance] isLoggedIn]) {
+        NSLog(@"%@ %@",[[dataUtil sharedInstance] token],[[dataUtil sharedInstance] uid]);
+        [SVProgressHUD showWithStatus:@"Logging in.."];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+        UINavigationController* navVC = [storyboard instantiateViewControllerWithIdentifier:@"showModules"];
+        [self presentViewController:navVC animated:YES completion:^{
+        }];
+    }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {

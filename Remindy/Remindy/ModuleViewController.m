@@ -11,7 +11,7 @@
 #import "constants.h"
 #import "serverUtil.h"
 #import "dataUtil.h"
-
+#import "ViewController.h"
 @interface ModuleViewController ()
 
 @end
@@ -38,7 +38,22 @@
     token = [[dataUtil sharedInstance]token];
     modules = [[NSArray alloc]init];
     [self checkForModules];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Log out"
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(logout:)];
+    [self.navigationItem setLeftBarButtonItem:item];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)logout:(id)sender {
+    [[dataUtil sharedInstance] logout];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController* vc = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    [SVProgressHUD show];
+    [self presentViewController:vc animated:YES completion:^{
+        [SVProgressHUD dismiss];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,6 +107,7 @@
     
     moduleData = [NSMutableData data];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [SVProgressHUD show];
     NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (theConnection) {
         // Create the NSMutableData to hold the received data.
@@ -107,21 +123,24 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     NSLog(@"didReceiveResponse");
+    
     [moduleData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     NSLog(@"receivedData");
+    
     [moduleData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"didFailWithError");
     NSLog(@"Connection failed: %@", [error description]);
+    [SVProgressHUD showErrorWithStatus:error.localizedDescription];
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"connectionDidFinishLoading");
-    
+    [SVProgressHUD dismiss];
     // convert to JSON
     NSError *myError = nil;
     NSDictionary *res = [NSJSONSerialization JSONObjectWithData:moduleData options:NSJSONReadingMutableLeaves error:&myError];
@@ -131,7 +150,6 @@
     [[dataUtil sharedInstance] setModules:modules];
     NSLog(@"here");
     [moduleTableView reloadData];
-    
 }
 
 @end

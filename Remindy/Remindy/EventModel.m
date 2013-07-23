@@ -25,5 +25,16 @@
     return self;
 }
 
+- (NSComparisonResult)compare:(EventModel *)otherObject {
+    if ([otherObject.deadline compare:[NSDate date]] == NSOrderedDescending &&
+        ([self.deadline compare:[NSDate date]] == NSOrderedDescending)) {
+        // if both not outdated
+        NSNumber* selfScore = [NSNumber numberWithInt:self.numOfAgrees - self.numOfDisagrees];
+        NSNumber* otherScore = [NSNumber numberWithInt:otherObject.numOfAgrees - otherObject.numOfDisagrees];
+        return [otherScore compare:selfScore];
+    } else {
+        return [otherObject.deadline compare:self.deadline];
+    }
+}
 
 @end

@@ -13,4 +13,6 @@
 @property (nonatomic,strong) NSString* token;
 @property (nonatomic,strong) NSArray* modules;
 + (dataUtil*) sharedInstance;
+- (BOOL)isLoggedIn;
+- (void) logout;
 @end
