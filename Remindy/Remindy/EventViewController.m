@@ -98,6 +98,24 @@
     eventTable.dataSource =self;
     UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     self.navigationItem.backBarButtonItem = backBarButton;
+    [SVProgressHUD show];
+    [serverUtil retrieveAllEventsOfModule:moduleCode withViewer:matricNumber completeHandler:^(id data, NSError *error) {
+        if (!error){
+            [SVProgressHUD dismiss];
+            eventList = (NSArray*) data;
+            if ([eventList count] == 0) {
+                [SVProgressHUD showSuccessWithStatus:@"No event in this module"];
+            }
+            [eventTable reloadData];
+        } else {
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+        }
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,19 +138,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(retrievesEventNotification:) name:NOTIF_EVENT_OF_MODULE_RETRIEVED object:nil];
-    [serverUtil retrieveAllEventsOfModule:moduleCode withViewer:matricNumber];
 }
-- (void) retrievesEventNotification:(NSNotification *) notification{
-    NSLog(@"notification receieved!!!");
-    
-    NSDictionary *userInfo = notification.userInfo;
-    
-    eventList = [userInfo objectForKey: @"eventList"];
-    for (EventModel *event in eventList) {
-        NSLog(@"Module: %@ Event title: %@ description: %@ with deadline: %@", event.moduleCode, event.eventTitle, event.description, event.deadline);
-    }
-    [eventTable reloadData];
-}
+
 
 @end

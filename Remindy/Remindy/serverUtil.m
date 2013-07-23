@@ -25,17 +25,14 @@
 }
 
 // User clicked "Agree" or "Disagree" button:
-+ (void) user:(NSString *) matricNumber agrees: (BOOL) isAgreed EventWithID:(NSString*) eventID{
++ (void) user:(NSString *)matricNumber agrees: (BOOL)isAgreed EventWithID:(NSString*)eventID completeHandler:(NetworkCompleteHandler)completeHandler {
     
-    [serverUtil user:matricNumber cancelAgreeOrDisagreeOfEvent:eventID];
-    
+    [serverUtil user:matricNumber cancelAgreeOrDisagreeOfEvent:eventID completeHandler:completeHandler];
     NSLog(@"In server util, the user %@ agrees: %d with event: %@", matricNumber, isAgreed, eventID);
     PFObject *newAgreeOrDisagree = [PFObject objectWithClassName:@"agreeAndDisagree"];
-    
     [newAgreeOrDisagree setObject:matricNumber forKey:@"matricNumber"];
     [newAgreeOrDisagree setObject:[NSNumber numberWithBool:isAgreed] forKey:@"isAgreed"];
     [newAgreeOrDisagree setObject:eventID forKey:@"eventID"];
-   
     [newAgreeOrDisagree saveInBackground];
 }
 
@@ -55,7 +52,7 @@
  *
 */
 
-+ (void) user:(NSString *) matricNumber isAgreeWithEventWithID:(NSString *)eventID{
++ (void) user:(NSString *) matricNumber isAgreeWithEventWithID:(NSString *)eventID completeHandler:(NetworkCompleteHandler)completeHandler{
     
     PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
     
@@ -68,33 +65,22 @@
             // The find succeeded.
             
             // Create a dictionary to be passed around:
-            NSArray *values = [[NSArray alloc] initWithObjects:matricNumber, eventID, nil];
-            NSArray *keys = [[NSArray alloc] initWithObjects:@"matricNumber", @"eventID", nil];
-            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
-            
             if (objects.count > 1){
                 NSLog(@"More than one item per user in agreeAndDisagree");
             }
             
             else if (objects.count == 0){
                 // The user doesn't specify "Agree" or "Disagree" yet.
-                [userInfo setObject:[NSNumber numberWithInt:kUNKNOWN] forKey:@"isAgreed"];
                 // Later, retrieve this way: AgreeType agree = [[list objectAtIndex:0] intValue];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AGREE_OR_DISAGREE object:nil userInfo:userInfo];
+                completeHandler ([NSNumber numberWithInt:kUNKNOWN],nil);
             }
             
             else {
                 PFObject *object = objects[0];
                 if ([object objectForKey:@"isAgreed"] == [NSNumber numberWithBool:YES]){
-                    
-                    [userInfo setObject:[NSNumber numberWithInt:kAGREED] forKey:@"isAgreed"];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AGREE_OR_DISAGREE object:nil userInfo:userInfo];
-                    
+                    completeHandler([NSNumber numberWithInt:kAGREED],nil);
                 } else if ([object objectForKey:@"isAgreed"] == [NSNumber numberWithBool:NO]){
-                    
-                    [userInfo setObject:[NSNumber numberWithInt:kDISAGREED] forKey:@"isAgreed"];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_AGREE_OR_DISAGREE object:nil userInfo:userInfo];
-                    
+                    completeHandler([NSNumber numberWithInt:kDISAGREED],nil);
                 } else {
                     NSLog(@"Unknown type of isAgreed field");
                 }
@@ -102,27 +88,19 @@
             
         } else {
             // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            completeHandler(nil,error);
         }
     }];
 }
 
-
-+ (void) retrieveAllEventsOfModule:(NSString *) moduleCode withViewer:(NSString*) matricNumber{
++ (void) retrieveAllEventsOfModule:(NSString *) moduleCode withViewer:(NSString*) matricNumber completeHandler:(NetworkCompleteHandler)completeHandler {
     PFQuery *query = [PFQuery queryWithClassName:@"event"];
-    
     [query whereKey:@"moduleCode" equalTo:moduleCode];
-    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            
-            // The find succeeded.
-            
-            // Create a dictionary to be passed around:
-            NSArray *values = [[NSArray alloc] initWithObjects: moduleCode, nil];
-            NSArray *keys = [[NSArray alloc] initWithObjects:@"moduleCode", nil];
-            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
-            
+            if ([objects count] == 0) { // For empty
+                completeHandler([NSArray array],nil);
+            }
             NSMutableArray *eventList = [[NSMutableArray alloc]init];
             for (PFObject *object in objects) {
                 EventModel *newEvent = [[EventModel alloc] initWithModuleCode:moduleCode
@@ -135,69 +113,103 @@
                 PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
                 [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:YES]];
                 [query whereKey:@"eventID" equalTo:newEvent.eventID];
-                
-                int count = [query countObjects];
-                newEvent.numOfAgrees = count;
-                
-                query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
-                [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:NO]];
-                [query whereKey:@"eventID" equalTo:newEvent.eventID];
-                
-                count = [query countObjects];
-                newEvent.numOfDisagrees = count;
-                
-                
-                // Check whether the viewer agrees or disagrees with this event:
-                query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
-                
-                [query whereKey:@"matricNumber" equalTo:matricNumber];
-                [query whereKey:@"eventID" equalTo: newEvent.eventID];
-                
-                NSArray *objects = [query findObjects];
-                
-                NSLog(@"object coutn: %d", objects.count);
-                
-                if (objects.count > 1){
-                    NSLog(@"More than one item per user in agreeAndDisagree");
-                }
-                
-                else if (objects.count == 0){
-                    // The user doesn't specify "Agree" or "Disagree" yet.
-                    newEvent.isCurrentViewerAgrees = kUNKNOWN;
-                    NSLog(@"In server util, the user %@ unknowns the event %@", matricNumber, newEvent.eventID);
-                }
-                
-                else {
-                    PFObject *object = objects[0];
-                    if ([object objectForKey:@"isAgreed"] == [NSNumber numberWithBool:YES]){
-                        NSLog(@"In server util, the user %@ agrees the event %@", matricNumber, newEvent.eventID);
-
-                        newEvent.isCurrentViewerAgrees = kAGREED;
+                [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+                    newEvent.numOfAgrees = number;
+                    PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
+                    [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:NO]];
+                    [query whereKey:@"eventID" equalTo:newEvent.eventID];
+                    
+                    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+                        newEvent.numOfDisagrees = number;
+                        // Check whether the viewer agrees or disagrees with this event:
+                        PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
                         
-                    } else if ([object objectForKey:@"isAgreed"] == [NSNumber numberWithBool:NO]){
-                        NSLog(@"In server util, the user %@ disagrees the event %@", matricNumber, newEvent.eventID);
-
-                        newEvent.isCurrentViewerAgrees = kDISAGREED;
+                        [query whereKey:@"matricNumber" equalTo:matricNumber];
+                        [query whereKey:@"eventID" equalTo: newEvent.eventID];
                         
-                    } else {
-                        NSLog(@"Unknown type of isAgreed field");
-                    }
-                }
-                
-                newEvent.agreement = object;
-                
-                [eventList addObject:newEvent];
+                        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                            NSLog(@"object coutn: %d", objects.count);
+                            
+                            if (objects.count > 1){
+                                NSLog(@"More than one item per user in agreeAndDisagree");
+                            }
+                            
+                            else if (objects.count == 0){
+                                // The user doesn't specify "Agree" or "Disagree" yet.
+                                newEvent.isCurrentViewerAgrees = kUNKNOWN;
+                                NSLog(@"In server util, the user %@ unknowns the event %@", matricNumber, newEvent.eventID);
+                            }
+                            
+                            else {
+                                PFObject *object = objects[0];
+                                if ([object objectForKey:@"isAgreed"] == [NSNumber numberWithBool:YES]){
+                                    NSLog(@"In server util, the user %@ agrees the event %@", matricNumber, newEvent.eventID);
+                                    
+                                    newEvent.isCurrentViewerAgrees = kAGREED;
+                                    
+                                } else if ([object objectForKey:@"isAgreed"] == [NSNumber numberWithBool:NO]){
+                                    NSLog(@"In server util, the user %@ disagrees the event %@", matricNumber, newEvent.eventID);
+                                    
+                                    newEvent.isCurrentViewerAgrees = kDISAGREED;
+                                    
+                                } else {
+                                    NSLog(@"Unknown type of isAgreed field");
+                                }
+                            }
+                            newEvent.agreement = object;
+                            [eventList addObject:newEvent];
+                            completeHandler(eventList,nil);
+                        }];
+                    }];
+                }];
             }
-            
-            [userInfo setObject:eventList forKey:@"eventList"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_EVENT_OF_MODULE_RETRIEVED object:nil userInfo:userInfo];
-        
-        
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
+            completeHandler(nil,error);
         }
     }];
+}
+/*
++ (void) getNumOfAgreesAndDisagreesOfEvent: (NSString *) eventID completeHandler:(NetworkCompleteHandler)completeHandler{
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
+    [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:YES]];
+    [query whereKey:@"eventID" equalTo:eventID];
+    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+        if (!error) {
+            // The count request succeeded. Log the count
+            NSLog(@"In server Util: The event of ID %@ has %d agrees", eventID, count);
+            
+            // Create a dictionary to be passed around:
+            NSArray *values = [[NSArray alloc] initWithObjects: eventID, [NSNumber numberWithInt:count], nil];
+            NSArray *keys = [[NSArray alloc] initWithObjects:@"eventID", @"agreeCount", nil];
+            NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] initWithObjects:values forKeys:keys];
+            PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
+            [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:NO]];
+            [query whereKey:@"eventID" equalTo:eventID];
+            
+            [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
+                if (!error) {
+                    // The count request succeeded. Log the count
+                    NSLog(@"In server util: The event of ID %@ has %d disagrees", eventID, count);
+                    
+                    [userInfo setObject: [NSNumber numberWithInt: count] forKey:@"disagreeCount"];
+                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NUM_AGREE_DISAGREE_RETRIEVED object:nil userInfo:userInfo];
+                } else {
+                    NSLog(@"Query of counting disagrees failed");
+                }
+            }];
+            
+        } else {
+            NSLog(@"Query of counting agrees failed");
+        }
+    }];
+}
+
++ (void) addNumOfDisagreesOfEvent: (NSString *) eventID toDictionary: (NSMutableDictionary *) userInfo{
+   
 }
 
 
@@ -224,38 +236,23 @@
     }];
 }
 
-// Helper function.
-+ (void) addNumOfDisagreesOfEvent: (NSString *) eventID toDictionary: (NSMutableDictionary *) userInfo{
-    PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
-    [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:NO]];
-    [query whereKey:@"eventID" equalTo:eventID];
+*/
 
-    [query countObjectsInBackgroundWithBlock:^(int count, NSError *error) {
-        if (!error) {
-            // The count request succeeded. Log the count
-            NSLog(@"In server util: The event of ID %@ has %d disagrees", eventID, count);
-            
-            [userInfo setObject: [NSNumber numberWithInt: count] forKey:@"disagreeCount"];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_NUM_AGREE_DISAGREE_RETRIEVED object:nil userInfo:userInfo];
-        } else {
-            NSLog(@"Query of counting disagrees failed");
-        }
-    }];
-}
-
-+ (void) user: (NSString*)matricNumber cancelAgreeOrDisagreeOfEvent: (NSString*)eventID{
++ (void) user: (NSString*)matricNumber cancelAgreeOrDisagreeOfEvent: (NSString*)eventID completeHandler:(NetworkCompleteHandler)completeHandler {
     PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
     [query whereKey:@"matricNumber" equalTo:matricNumber];
     [query whereKey:@"eventID" equalTo:eventID];
     
-    NSArray *objects = [query findObjects];
-    
-    // Do something with the found objects
-    for (PFObject *object in objects) {
-        [object delete];
-    }
-    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        for (PFObject *object in objects) {
+            [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (error) {
+                    completeHandler(nil,error);
+                }
+            }];
+        }
+
+    }];
 }
 
 @end

@@ -11,7 +11,7 @@
 @interface EventViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic) NSString *moduleCode;
 @property (nonatomic) NSString *matricNumber;
-@property (nonatomic) NSMutableArray *eventList;
+@property (nonatomic) NSArray *eventList;
 @property (strong, nonatomic) IBOutlet UITableView *eventTable;
 
 -(void) setModuleCode:(NSString *)code andUid:(NSString*)uid;
