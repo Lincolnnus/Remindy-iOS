@@ -19,6 +19,8 @@
 		49AC3A2717885B2100680735 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A2617885B2100680735 /* StoreKit.framework */; };
 		49AC3A2917885B2F00680735 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A2817885B2F00680735 /* SystemConfiguration.framework */; };
 		49AC3A2B17885B6200680735 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49AC3A2A17885B6200680735 /* CoreLocation.framework */; };
+		C5F3DE2E179EDE8E00AD66A4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C5F3DE2B179EDE8E00AD66A4 /* SVProgressHUD.bundle */; };
+		C5F3DE2F179EDE8E00AD66A4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F3DE2D179EDE8E00AD66A4 /* SVProgressHUD.m */; };
 		CF0696801788764100C3F498 /* ModuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF06967E1788764100C3F498 /* ModuleViewController.m */; };
 		CF2AE69C179E2816000E3541 /* dataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2AE69B179E2816000E3541 /* dataUtil.m */; };
 		CF2E448E177768C5006B0F57 /* EventModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2E448D177768C4006B0F57 /* EventModel.m */; };
@@ -58,6 +60,9 @@
 		49AC3A2A17885B6200680735 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		49AC3A2C17885C5600680735 /* serverUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serverUtil.h; sourceTree = "<group>"; };
 		49AC3A2D17885C5600680735 /* serverUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serverUtil.m; sourceTree = "<group>"; };
+		C5F3DE2B179EDE8E00AD66A4 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		C5F3DE2C179EDE8E00AD66A4 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		C5F3DE2D179EDE8E00AD66A4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		CF06967D1788764100C3F498 /* ModuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModuleViewController.h; sourceTree = "<group>"; };
 		CF06967E1788764100C3F498 /* ModuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModuleViewController.m; sourceTree = "<group>"; };
 		CF2AE69A179E2816000E3541 /* dataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dataUtil.h; sourceTree = "<group>"; };
@@ -117,9 +122,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C5F3DE29179EDE6B00AD66A4 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				C5F3DE2A179EDE7500AD66A4 /* SVProgressHUD */,
+			);
+			name = Vender;
+			sourceTree = "<group>";
+		};
+		C5F3DE2A179EDE7500AD66A4 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C5F3DE2B179EDE8E00AD66A4 /* SVProgressHUD.bundle */,
+				C5F3DE2C179EDE8E00AD66A4 /* SVProgressHUD.h */,
+				C5F3DE2D179EDE8E00AD66A4 /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		CF8AA81A1776E27800688642 = {
 			isa = PBXGroup;
 			children = (
+				C5F3DE29179EDE6B00AD66A4 /* Vender */,
 				CFFA7CF1178A69BA00BCCCC2 /* Assets */,
 				CF8AA82C1776E27800688642 /* Remindy */,
 				CF8AA8251776E27800688642 /* Frameworks */,
@@ -271,6 +295,7 @@
 				CFFA7D01178ABD0700BCCCC2 /* thumb_up_grey.png in Resources */,
 				CFFA7D02178ABD0700BCCCC2 /* thumb_up.png in Resources */,
 				CFFA7D03178ABD0700BCCCC2 /* thumb_down_grey.png in Resources */,
+				C5F3DE2E179EDE8E00AD66A4 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +317,7 @@
 				CFFA7CFB178A8D7800BCCCC2 /* EventViewController.m in Sources */,
 				CFFA7D06178B05D600BCCCC2 /* AddEventViewController.m in Sources */,
 				CF2AE69C179E2816000E3541 /* dataUtil.m in Sources */,
+				C5F3DE2F179EDE8E00AD66A4 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

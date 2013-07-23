@@ -23,11 +23,14 @@
 - (IBAction)thumbUpPressed:(id)sender {
     // Agreed before, cancel it:
     if(agreed){
-        
         [thumbUpButton setImage:[UIImage imageNamed:@"thumb_up_grey.png"] forState:UIControlStateNormal];
         agreed = NO;
-        [serverUtil user:viewerMatricNumber cancelAgreeOrDisagreeOfEvent:eventID];
-        
+        [serverUtil user:viewerMatricNumber cancelAgreeOrDisagreeOfEvent:eventID completeHandler:^(id data, NSError *error) {
+            if (error) {
+                agreeNumLabel.text = [NSString stringWithFormat:@"%d", agreeNumLabel.text.integerValue + 1];
+                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            }
+        }];
         agreeNumLabel.text = [NSString stringWithFormat:@"%d", agreeNumLabel.text.integerValue - 1];
     }
     
@@ -38,7 +41,11 @@
         
         agreeNumLabel.text = [NSString stringWithFormat:@"%d", agreeNumLabel.text.integerValue + 1];
         
-        [serverUtil user:viewerMatricNumber agrees:YES EventWithID:eventID];
+        [serverUtil user:viewerMatricNumber agrees:YES EventWithID:eventID completeHandler:^(id data, NSError *error) {
+            if (error) {
+                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            }
+        }];
 
         if (disagreed){
             
@@ -58,16 +65,23 @@
         [thumbDownButton setImage:[UIImage imageNamed:@"thumb_down_grey.png"] forState:UIControlStateNormal];
         disagreed = NO;
         
-        [serverUtil user:viewerMatricNumber cancelAgreeOrDisagreeOfEvent:eventID];
+        [serverUtil user:viewerMatricNumber cancelAgreeOrDisagreeOfEvent:eventID completeHandler:^(id data, NSError *error) {
+            if (error) {
+                disagreeNumLabel.text = [NSString stringWithFormat:@"%d", disagreeNumLabel.text.integerValue + 1];
+                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            }
+        }];
         disagreeNumLabel.text = [NSString stringWithFormat:@"%d", disagreeNumLabel.text.integerValue - 1];
-
-        
     }else{
         [thumbDownButton setImage:[UIImage imageNamed:@"thumb_down.png"] forState:UIControlStateNormal];
         disagreed = YES;
         disagreeNumLabel.text = [NSString stringWithFormat:@"%d", disagreeNumLabel.text.integerValue + 1];
 
-        [serverUtil user:viewerMatricNumber agrees:NO EventWithID:eventID];
+        [serverUtil user:viewerMatricNumber agrees:NO EventWithID:eventID completeHandler:^(id data, NSError *error) {
+            if (error){
+                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            }
+        }];
 
         if (agreed){
             

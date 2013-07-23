@@ -43,7 +43,7 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-	
+	[SVProgressHUD show];
     NSString *urlString = request.URL.absoluteString;
 	NSLog(@"urlString: %@", urlString);
 	
@@ -52,6 +52,7 @@
     return TRUE;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [SVProgressHUD dismiss];
     NSLog(@"finished lodding");
 }
 
