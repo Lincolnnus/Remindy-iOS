@@ -98,7 +98,9 @@
     [query whereKey:@"moduleCode" equalTo:moduleCode];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            
+            if ([objects count] == 0) { // For empty
+                completeHandler([NSArray array],nil);
+            }
             NSMutableArray *eventList = [[NSMutableArray alloc]init];
             for (PFObject *object in objects) {
                 EventModel *newEvent = [[EventModel alloc] initWithModuleCode:moduleCode
@@ -111,7 +113,6 @@
                 PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
                 [query whereKey:@"isAgreed" equalTo:[NSNumber numberWithBool:YES]];
                 [query whereKey:@"eventID" equalTo:newEvent.eventID];
-                
                 [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
                     newEvent.numOfAgrees = number;
                     PFQuery *query = [PFQuery queryWithClassName:@"agreeAndDisagree"];
@@ -160,8 +161,6 @@
                             completeHandler(eventList,nil);
                         }];
                     }];
-                    
-                   
                 }];
             }
         } else {

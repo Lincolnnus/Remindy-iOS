@@ -103,6 +103,9 @@
         if (!error){
             [SVProgressHUD dismiss];
             eventList = (NSArray*) data;
+            if ([eventList count] == 0) {
+                [SVProgressHUD showSuccessWithStatus:@"No event in this module"];
+            }
             [eventTable reloadData];
         } else {
             [SVProgressHUD showErrorWithStatus:error.localizedDescription];
