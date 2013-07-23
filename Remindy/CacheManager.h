@@ -14,7 +14,7 @@
 @property (nonatomic,strong) NSString* cachedCurUserAccessToken;
 - (void) clearCachedAccessToken;
 - (void) clearUserData;
-
+- (void) clearCacheForKey:(NSString*)key;
 - (void) cacheObjectForKey:(NSString*)key object:(id<NSCoding>)object;
 - (id<NSCoding>) objectForKey:(NSString*)key;
 - (BOOL) isCached:(NSString*)key;

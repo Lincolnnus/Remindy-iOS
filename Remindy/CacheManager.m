@@ -74,6 +74,9 @@
     return cachesDirectory;
 }
 
+- (void) clearCacheForKey:(NSString*)key {
+    [self.objectCache removeCacheForKey:key];
+}
 
 - (void) clearObjectData {
     [self.objectCache clearCache];
