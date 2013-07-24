@@ -74,7 +74,7 @@
     cell.viewerMatricNumber = matricNumber;
     cell.eventID = event.eventID;
     if ([event.deadline compare:[NSDate date]]==NSOrderedAscending){
-        cell.hidden = YES;
+        cell.deadline.textColor = [UIColor grayColor];
     }else{
         cell.deadline.textColor = [UIColor blueColor];
     }
@@ -109,18 +109,6 @@
     UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
     self.navigationItem.backBarButtonItem = backBarButton;
     [SVProgressHUD show];
-    [serverUtil retrieveAllEventsOfModule:moduleCode withViewer:matricNumber completeHandler:^(id data, NSError *error) {
-        if (!error){
-            [SVProgressHUD dismiss];
-             eventList = [((NSArray*) data)sortedArrayUsingSelector:@selector(compare:)];
-            if ([eventList count] == 0) {
-                [SVProgressHUD showSuccessWithStatus:@"No event in this module"];
-            }
-            [eventTable reloadData];
-        } else {
-            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-        }
-    }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -144,7 +132,18 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.view setNeedsDisplay];
+    [serverUtil retrieveAllEventsOfModule:moduleCode withViewer:matricNumber completeHandler:^(id data, NSError *error) {
+        if (!error){
+            [SVProgressHUD dismiss];
+            eventList = [((NSArray*) data)sortedArrayUsingSelector:@selector(compare:)];
+            if ([eventList count] == 0) {
+                [SVProgressHUD showSuccessWithStatus:@"No event in this module"];
+            }
+            [eventTable reloadData];
+        } else {
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+        }
+    }];
 }
 
 
